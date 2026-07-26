@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>من نحن | Aurora Marketing Agency</title>
+    <meta
+      name="description"
+      content="تعرّف على قصتنا، مهمتنا، ورؤيتنا في وكالة Aurora للتسويق الرقمي. نحن فريق يجمع الإبداع بالبيانات لتقديم نتائج غير مسبوقة."
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>"
+    />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <!-- FontAwesome 6 Icons CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Prevent White Flash in Dark Mode -->
+    <script>
+      const THEME_KEY = 'aurora_theme';
+      const theme =
+        localStorage.getItem(THEME_KEY) ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.style.colorScheme = theme;
+    </script>
+  </head>
+  <body>
+    <!-- Page Loader with Ripple Effect -->
+    <div class="page-loader">
+      <div class="loading-ripple"></div>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header class="header">
+      <div class="container">
+        <nav class="navbar">
+          <a href="index.html" class="logo">
+            <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+            <span>Aurora</span>
+          </a>
+
+          <ul class="nav-menu nav-menu-desktop">
+            <li>
+              <a href="index.html" class="nav-link" data-i18n="nav.home"
+                >الرئيسية</a
+              >
+            </li>
+            <li>
+              <a href="about.html" class="nav-link active" data-i18n="nav.about"
+                >من نحن</a
+              >
+            </li>
+            <li>
+              <a href="contact.html" class="nav-link" data-i18n="nav.contact"
+                >تواصل معنا</a
+              >
+            </li>
+          </ul>
+
+          <div class="nav-actions">
+            <div class="lang-switch">
+              <button class="lang-btn active" data-lang="ar">AR</button>
+              <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+
+            <button class="btn-icon theme-toggle" aria-label="Switch Theme">
+              <i class="fas fa-moon"></i>
+            </button>
+
+            <a
+              href="contact.html"
+              class="btn btn-primary nav-menu-desktop"
+              data-i18n="nav.cta"
+              >ابدأ الآن</a
+            >
+
+            <button class="mobile-toggle" aria-label="Open Menu">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Mobile Off-Canvas Drawer -->
+    <div class="drawer-overlay"></div>
+    <div class="mobile-drawer">
+      <div>
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+          "
+        >
+          <a href="index.html" class="logo">
+            <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+            <span>Aurora</span>
+          </a>
+          <button class="drawer-close btn-icon">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <ul style="display: flex; flex-direction: column; gap: 0.5rem">
+          <li style="margin: 0 -0.75rem; padding: 0.75rem">
+            <a href="index.html" class="nav-link active" data-i18n="nav.home"
+              >الرئيسية</a
+            >
+          </li>
+          <li style="margin: 0 -0.75rem; padding: 0.75rem">
+            <a href="about.html" class="nav-link" data-i18n="nav.about"
+              >من نحن</a
+            >
+          </li>
+          <li style="margin: 0 -0.75rem; padding: 0.75rem">
+            <a href="contact.html" class="nav-link" data-i18n="nav.contact"
+              >تواصل معنا</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div style="margin-top: 2rem">
+        <a
+          href="contact.html"
+          class="btn btn-primary"
+          style="width: 100%"
+          data-i18n="nav.cta"
+          >ابدأ الآن</a
+        >
+      </div>
+    </div>
+
+    <!-- Page Banner -->
+    <section class="hero" style="padding-bottom: 4rem">
+      <div class="container text-center">
+        <div class="section-tag" data-i18n="about_preview.tag">من نحن</div>
+        <h1 class="section-title">شغف التسويق وقوة الأرقام</h1>
+        <p class="section-subtitle">
+          نصمم آفاقاً جديدة للعلامات التجارية التي تسعى نحو التميز الرقمي
+          المستدام.
+        </p>
+      </div>
+    </section>
+
+    <!-- Mission, Vision & Values Section -->
+    <section class="section-padding">
+      <div class="container">
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+          "
+        >
+          <div class="service-card reveal">
+            <div class="service-icon"><i class="fas fa-rocket"></i></div>
+            <h3 data-i18n="about_preview.mission_title">مهمتنا</h3>
+            <p data-i18n="about_preview.mission_desc">
+              تمكين العلامات التجارية بأحدث أدوات التسويق الرقمي للسيطرة على
+              أسواقها وتحقيق عائد استثمار استثنائي.
+            </p>
+          </div>
+
+          <div class="service-card reveal reveal-delay-1">
+            <div class="service-icon"><i class="fas fa-eye"></i></div>
+            <h3 data-i18n="about_preview.vision_title">رؤيتنا</h3>
+            <p data-i18n="about_preview.vision_desc">
+              أن نكون الشريك الإبداعي العالمي الأول للمؤسسات الطموحة التي تصنع
+              المستقبل.
+            </p>
+          </div>
+
+          <div class="service-card reveal reveal-delay-2">
+            <div class="service-icon"><i class="fas fa-gem"></i></div>
+            <h3>قيمنا الجوهرية</h3>
+            <p>
+              الشفافية المطلقة، الدقة في التحليل، الابتكار الإبداعي، والتركيز
+              الكامل على نجاح العميل.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section
+      class="section-padding"
+      style="background-color: var(--bg-surface)"
+    >
+      <div class="container">
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+          "
+        >
+          <div class="reveal">
+            <div class="section-tag">قصتنا</div>
+            <h2 class="section-title">رحلة Aurora نحو القمة</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1.25rem">
+              تأسست وكالة Aurora في عام 2021 بهدف إحداث ثورة في عالم التسويق
+              الرقمي بالمنطقة العربية والعالم. بدأنا بفريق صغير من المهندسين،
+              المصممين، ومحللي البيانات الشغوفين.
+            </p>
+            <p style="color: var(--text-muted); margin-bottom: 2rem">
+              اليوم، نخدم أكثر من 150 علامة تجارية في مختلف القطاعات، وسددنا
+              حملات إعلانية وتكيفية نجحت في توليد مبيعات تتجاوز 50 مليون دولار
+              لشركائنا.
+            </p>
+            <a href="contact.html" class="btn btn-primary" data-i18n="nav.cta"
+              >ابدأ الآن</a
+            >
+          </div>
+          <div class="reveal reveal-delay-1">
+            <img
+              src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80"
+              alt="Aurora Office Story"
+              style="
+                border-radius: var(--radius-lg);
+                box-shadow: var(--shadow-lg);
+              "
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="text-center">
+          <div class="section-tag">فريق العمل</div>
+          <h2 class="section-title">خبراء النمو خلف نجاح Aurora</h2>
+          <p class="section-subtitle">
+            فريق متكامل من المبدعين، المحللين، والاستراتيجيين الملتزمين بنجاح
+            مشروعاتك.
+          </p>
+        </div>
+
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+          "
+        >
+          <!-- Member 1 -->
+          <div
+            class="portfolio-card reveal"
+            style="text-align: center; padding: 2rem 1.5rem"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80"
+              alt="Team 1"
+              style="
+                width: 120px;
+                height: 120px;
+                border-radius: 50%;
+                margin: 0 auto 1.25rem auto;
+                object-fit: cover;
+                border: 3px solid var(--primary-color);
+              "
+            />
+            <h4 style="font-size: 1.2rem; font-weight: 700">أحمد الشافعي</h4>
+            <p
+              style="
+                color: var(--primary-color);
+                font-size: 0.9rem;
+                font-weight: 600;
+                margin-bottom: 0.5rem;
+              "
+            >
+              المؤسس والرئيس التنفيذي
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.85rem">
+              خبير استراتيجيات النمو الرقمي بأكثر من 10 سنوات خبرة.
+            </p>
+          </div>
+
+          <!-- Member 2 -->
+          <div
+            class="portfolio-card reveal reveal-delay-1"
+            style="text-align: center; padding: 2rem 1.5rem"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80"
+              alt="Team 2"
+              style="
+                width: 120px;
+                height: 120px;
+                border-radius: 50%;
+                margin: 0 auto 1.25rem auto;
+                object-fit: cover;
+                border: 3px solid var(--primary-color);
+              "
+            />
+            <h4 style="font-size: 1.2rem; font-weight: 700">نور الدين فاروق</h4>
+            <p
+              style="
+                color: var(--primary-color);
+                font-size: 0.9rem;
+                font-weight: 600;
+                margin-bottom: 0.5rem;
+              "
+            >
+              مدير الإعلانات المدفوعة
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.85rem">
+              متخصص تحسين الحملات وتحقيق أعلى معدل عائد ROI.
+            </p>
+          </div>
+
+          <!-- Member 3 -->
+          <div
+            class="portfolio-card reveal reveal-delay-2"
+            style="text-align: center; padding: 2rem 1.5rem"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80"
+              alt="Team 3"
+              style="
+                width: 120px;
+                height: 120px;
+                border-radius: 50%;
+                margin: 0 auto 1.25rem auto;
+                object-fit: cover;
+                border: 3px solid var(--primary-color);
+              "
+            />
+            <h4 style="font-size: 1.2rem; font-weight: 700">مريم مصطفى</h4>
+            <p
+              style="
+                color: var(--primary-color);
+                font-size: 0.9rem;
+                font-weight: 600;
+                margin-bottom: 0.5rem;
+              "
+            >
+              مديرة الإبداع والهوية البصرية
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.85rem">
+              مبتكرة الهويات التجارية الجذابة والاستراتيجية.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="cta-banner">
+          <h2 data-i18n="cta.title">
+            هل أنت مستعد لتحويل استراتيجيتك التسويقية؟
+          </h2>
+          <p data-i18n="cta.subtitle">
+            احجز جلسة استشارية مع خبراء النمو لدينا واحصل على خطة تسويقية مخصصة
+            لمشروعك.
+          </p>
+          <a
+            href="contact.html"
+            class="btn btn-cta-secondary"
+            data-i18n="cta.btn"
+            >تواصل معنا اليوم</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="logo" style="margin-bottom: 1rem">
+              <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+              <span>Aurora</span>
+            </a>
+            <p data-i18n="footer.brand_desc">
+              Aurora هي وكالة تسويق مبتكرة تقود النمو الفعلي للأعمال من خلال
+              التصميم، البيانات، وصناعة المحتوى الإبداعي.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-link" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="X Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 data-i18n="footer.quick_links">روابط سريعة</h4>
+            <div class="footer-links">
+              <a href="index.html" data-i18n="nav.home">الرئيسية</a>
+              <a href="about.html" data-i18n="nav.about">من نحن</a>
+              <a href="contact.html" data-i18n="nav.contact">تواصل معنا</a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 data-i18n="footer.services_heading">خدماتنا الرئيسية</h4>
+            <div class="footer-links">
+              <a href="services.html" data-i18n="services.s1_title"
+                >التسويق عبر منصات التواصل</a
+              >
+              <a href="services.html" data-i18n="services.s2_title"
+                >تصميم الهوية التجارية</a
+              >
+              <a href="services.html" data-i18n="services.s3_title"
+                >صناعة المحتوى والإعلانات</a
+              >
+              <a href="services.html" data-i18n="services.s4_title"
+                >الإعلانات المدفوعة (PPC)</a
+              >
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 data-i18n="footer.contact_heading">معلومات التواصل</h4>
+            <div class="footer-links">
+              <p>
+                <i
+                  class="fas fa-map-marker-alt"
+                  style="color: var(--primary-color); margin-left: 8px"
+                ></i>
+                القاهرة & دبي
+              </p>
+              <p>
+                <i
+                  class="fas fa-phone"
+                  style="color: var(--primary-color); margin-left: 8px"
+                ></i>
+                +20 100 123 4567
+              </p>
+              <p>
+                <i
+                  class="fas fa-envelope"
+                  style="color: var(--primary-color); margin-left: 8px"
+                ></i>
+                contact@aurora.agency
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2026 Aurora Marketing Agency.
+            <span data-i18n="footer.rights">جميع الحقوق محفوظة.</span>
+          </p>
+          <div>
+            <a href="#" style="margin-left: 1rem; color: var(--text-muted)"
+              >سياسة الخصوصية</a
+            >
+            <a href="#" style="color: var(--text-muted)">الشروط والأحكام</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <button class="scroll-top-btn" aria-label="Scroll to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="js/theme.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/animation.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

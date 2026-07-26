@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تواصل معنا | Aurora Marketing Agency</title>
+    <meta
+      name="description"
+      content="تواصل مع خبراء وكالة Aurora للتسويق الرقمي واحصل على استشارة تسويقية مخصصة لتنمية أعمالك وتوسيع نطاق مبيعاتك."
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>"
+    />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <!-- FontAwesome 6 Icons CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Prevent White Flash in Dark Mode -->
+    <script>
+      const THEME_KEY = 'aurora_theme';
+      const theme =
+        localStorage.getItem(THEME_KEY) ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.style.colorScheme = theme;
+    </script>
+  </head>
+  <body>
+    <!-- Page Loader with Ripple Effect -->
+    <div class="page-loader">
+      <div class="loading-ripple"></div>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header class="header">
+      <div class="container">
+        <nav class="navbar">
+          <a href="index.html" class="logo">
+            <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+            <span>Aurora</span>
+          </a>
+
+          <ul class="nav-menu nav-menu-desktop">
+            <li>
+              <a href="index.html" class="nav-link" data-i18n="nav.home"
+                >الرئيسية</a
+              >
+            </li>
+            <li>
+              <a href="about.html" class="nav-link" data-i18n="nav.about"
+                >من نحن</a
+              >
+            </li>
+            <li>
+              <a
+                href="contact.html"
+                class="nav-link active"
+                data-i18n="nav.contact"
+                >تواصل معنا</a
+              >
+            </li>
+          </ul>
+
+          <div class="nav-actions">
+            <div class="lang-switch">
+              <button class="lang-btn active" data-lang="ar">AR</button>
+              <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+
+            <button class="btn-icon theme-toggle" aria-label="Switch Theme">
+              <i class="fas fa-moon"></i>
+            </button>
+
+            <a
+              href="contact.html"
+              class="btn btn-primary nav-menu-desktop"
+              data-i18n="nav.cta"
+              >ابدأ الآن</a
+            >
+
+            <button class="mobile-toggle" aria-label="Open Menu">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Mobile Off-Canvas Drawer -->
+    <div class="drawer-overlay"></div>
+    <div class="mobile-drawer">
+      <div>
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+          "
+        >
+          <a href="index.html" class="logo">
+            <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+            <span>Aurora</span>
+          </a>
+          <button class="drawer-close btn-icon">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <ul style="display: flex; flex-direction: column; gap: 1.25rem">
+          <li>
+            <a href="index.html" class="nav-link" data-i18n="nav.home"
+              >الرئيسية</a
+            >
+          </li>
+          <li>
+            <a href="about.html" class="nav-link" data-i18n="nav.about"
+              >من نحن</a
+            >
+          </li>
+          <li>
+            <a
+              href="contact.html"
+              class="nav-link active"
+              data-i18n="nav.contact"
+              >تواصل معنا</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div style="margin-top: 2rem">
+        <a
+          href="contact.html"
+          class="btn btn-primary"
+          style="width: 100%"
+          data-i18n="nav.cta"
+          >ابدأ الآن</a
+        >
+      </div>
+    </div>
+
+    <!-- Page Banner -->
+    <section class="hero" style="padding-bottom: 4rem">
+      <div class="container text-center">
+        <div class="section-tag" data-i18n="contact.tag">تواصل معنا</div>
+        <h1 class="section-title" data-i18n="contact.title">
+          لنصنع شيئاً استثنائياً معاً
+        </h1>
+        <p class="section-subtitle" data-i18n="contact.subtitle">
+          هل لديك مشروع في ذهنك أو تريد معرفة كيف يمكن لـ Aurora تسريع نموك؟
+          أرسل لنا رسالة.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Grid -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="contact-grid">
+          <!-- Contact Info Card -->
+          <div class="contact-info-card reveal">
+            <h3
+              style="font-size: 1.5rem; font-weight: 800; margin-bottom: 1.5rem"
+              data-i18n="contact.tag"
+            >
+              تواصل معنا
+            </h3>
+
+            <div class="info-item">
+              <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+              <div class="info-content">
+                <h4>العنوان والتواجد</h4>
+                <p data-i18n="contact.address">القاهرة، مصر & دبي، الإمارات</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+              <div class="info-content">
+                <h4>الهاتف والواتساب</h4>
+                <a href="tel:+201001234567" data-i18n="contact.phone_val"
+                  >+20 100 123 4567</a
+                >
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon"><i class="fas fa-envelope"></i></div>
+              <div class="info-content">
+                <h4>البريد الإلكتروني</h4>
+                <a
+                  href="mailto:contact@auroramarketing.agency"
+                  data-i18n="contact.email_val"
+                  >contact@auroramarketing.agency</a
+                >
+              </div>
+            </div>
+
+            <div style="margin-top: 2.5rem">
+              <h4
+                style="font-size: 1rem; font-weight: 700; margin-bottom: 1rem"
+              >
+                تابعنا على وسائل التواصل
+              </h4>
+              <div class="social-links">
+                <a href="#" class="social-link" aria-label="Facebook"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a href="#" class="social-link" aria-label="Instagram"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+                <a href="#" class="social-link" aria-label="LinkedIn"
+                  ><i class="fab fa-linkedin-in"></i
+                ></a>
+                <a href="#" class="social-link" aria-label="X Twitter"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form Wrapper -->
+          <div class="contact-form-wrapper reveal reveal-delay-1">
+            <!-- Success Alert Message -->
+            <div
+              id="formSuccessMessage"
+              style="
+                display: none;
+                padding: 1rem 1.25rem;
+                background: rgba(16, 185, 129, 0.15);
+                border: 1px solid #10b981;
+                color: #10b981;
+                border-radius: var(--radius-md);
+                margin-bottom: 1.5rem;
+              "
+              data-i18n="contact.success_msg"
+            >
+              شكراً لك! تم إرسال رسالتك بنجاح. سنتواصل معك خلال 24 ساعة.
+            </div>
+
+            <form id="auroraContactForm" novalidate>
+              <div class="form-group">
+                <label
+                  for="formName"
+                  class="form-label"
+                  data-i18n="contact.form_name"
+                  >الاسم الكامل</label
+                >
+                <input
+                  type="text"
+                  id="formName"
+                  class="form-control"
+                  placeholder="مثال: أحمد محمد"
+                  data-i18n-placeholder="contact.form_name_placeholder"
+                  required
+                />
+                <span class="error-text">يرجى إدخال الاسم الكامل.</span>
+              </div>
+
+              <div
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem"
+              >
+                <div class="form-group">
+                  <label
+                    for="formEmail"
+                    class="form-label"
+                    data-i18n="contact.form_email"
+                    >البريد الإلكتروني</label
+                  >
+                  <input
+                    type="email"
+                    id="formEmail"
+                    class="form-control"
+                    placeholder="name@company.com"
+                    data-i18n-placeholder="contact.form_email_placeholder"
+                    required
+                  />
+                  <span class="error-text">يرجى إدخال بريد إلكتروني صحيح.</span>
+                </div>
+
+                <div class="form-group">
+                  <label
+                    for="formPhone"
+                    class="form-label"
+                    data-i18n="contact.form_phone"
+                    >رقم الهاتف</label
+                  >
+                  <input
+                    type="tel"
+                    id="formPhone"
+                    class="form-control"
+                    placeholder="+20 100 000 0000"
+                    data-i18n-placeholder="contact.form_phone_placeholder"
+                    required
+                  />
+                  <span class="error-text">يرجى إدخال رقم هاتف صحيح.</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label
+                  for="formService"
+                  class="form-label"
+                  data-i18n="contact.form_service"
+                  >اختر الخدمة المطلوبة</label
+                >
+                <select id="formService" class="form-control">
+                  <option value="social">
+                    التسويق عبر منصات التواصل (Social Media)
+                  </option>
+                  <option value="brand">
+                    تصميم الهوية التجارية (Brand Identity)
+                  </option>
+                  <option value="ads">
+                    الإعلانات المدفوعة (Meta / Google Ads)
+                  </option>
+                  <option value="seo">تحسين محركات البحث (SEO)</option>
+                  <option value="web">تصميم وتطوير المواقع (Web Design)</option>
+                  <option value="all">استشارة تسويقية شاملة</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label
+                  for="formMessage"
+                  class="form-label"
+                  data-i18n="contact.form_message"
+                  >تفاصيل المشروع والأهداف</label
+                >
+                <textarea
+                  id="formMessage"
+                  rows="5"
+                  class="form-control"
+                  placeholder="أخبرنا عن مشروعك، الجدول الزمني، والأهداف..."
+                  data-i18n-placeholder="contact.form_message_placeholder"
+                  required
+                ></textarea>
+                <span class="error-text"
+                  >يرجى كتابة بعض التفاصيل عن مشروعك (10 حروف على الأقل).</span
+                >
+              </div>
+
+              <button
+                type="submit"
+                class="btn btn-primary"
+                style="width: 100%; justify-content: center"
+              >
+                <span data-i18n="contact.btn_submit">إرسال الرسالة</span>
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Map Section -->
+    <section class="section-padding" style="padding-top: 0">
+      <div class="container">
+        <div class="map-mockup reveal">
+          <iframe
+            title="Aurora Location Map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110502.60385108398!2d31.258464350000003!3d30.05948385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583fa60b21beeb%3A0x79dfb296e8423bba!2sCairo%2C%20Cairo%20Governorate!5e0!3m2!1sen!2seg!4v1700000000000!5m2!1sen!2seg"
+            allowfullscreen=""
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Accordion Section -->
+    <section
+      class="section-padding"
+      style="background-color: var(--bg-surface)"
+    >
+      <div class="container">
+        <div class="text-center">
+          <div class="section-tag">الأسئلة الشائعة</div>
+          <h2 class="section-title" data-i18n="contact.faq_title">
+            الأسئلة الشائعة
+          </h2>
+          <p class="section-subtitle">
+            إجابات سريعة على معظم الاستفسارات حول خدماتنا وآلية عملنا.
+          </p>
+        </div>
+
+        <div class="faq-accordion">
+          <div class="faq-item active reveal">
+            <button class="faq-header">
+              <span data-i18n="contact.faq1_q"
+                >ما الذي يميز Aurora عن وكالات التسويق الأخرى؟</span
+              >
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-body">
+              <p data-i18n="contact.faq1_a">
+                نحن نركز تماماً على عائد الاستثمار (ROI) ومقاييس الأداء الفعلية
+                المدعومة بأرقى المعايير الإبداعية.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal reveal-delay-1">
+            <button class="faq-header">
+              <span data-i18n="contact.faq2_q"
+                >كم يستغرق تنفيذ مشروع التسويق عادةً؟</span
+              >
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-body">
+              <p data-i18n="contact.faq2_a">
+                تستغرق مشاريع الهوية والمواقع من أسبوعين إلى 4 أسابيع، بينما
+                الحملات الإعلانية و SEO هي شراكات استراتيجية مستمرة.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal reveal-delay-2">
+            <button class="faq-header">
+              <span data-i18n="contact.faq3_q"
+                >هل تعملون مع الشركات الناشئة أم المؤسسات الكبرى؟</span
+              >
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-body">
+              <p data-i18n="contact.faq3_a">
+                كلاهما! نصمم أطر عملنا المرنة لترتقي مع حجم وطموح الشركات
+                الناشئة السريعة والشركات الراسخة على حد سواء.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="logo" style="margin-bottom: 1rem">
+              <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+              <span>Aurora</span>
+            </a>
+            <p data-i18n="footer.brand_desc">
+              Aurora هي وكالة تسويق مبتكرة تقود النمو الفعلي للأعمال من خلال
+              التصميم، البيانات، وصناعة المحتوى الإبداعي.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-link" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="X Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 data-i18n="footer.quick_links">روابط سريعة</h4>
+            <div class="footer-links">
+              <a href="index.html" data-i18n="nav.home">الرئيسية</a>
+              <a href="about.html" data-i18n="nav.about">من نحن</a>
+              <a href="contact.html" data-i18n="nav.contact">تواصل معنا</a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 data-i18n="footer.services_heading">خدماتنا الرئيسية</h4>
+            <div class="footer-links">
+              <a href="services.html" data-i18n="services.s1_title"
+                >التسويق عبر منصات التواصل</a
+              >
+              <a href="services.html" data-i18n="services.s2_title"
+                >تصميم الهوية التجارية</a
+              >
+              <a href="services.html" data-i18n="services.s3_title"
+                >صناعة المحتوى والإعلانات</a
+              >
+              <a href="services.html" data-i18n="services.s4_title"
+                >الإعلانات المدفوعة (PPC)</a
+              >
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 data-i18n="footer.contact_heading">معلومات التواصل</h4>
+            <div class="footer-links">
+              <p>
+                <i
+                  class="fas fa-map-marker-alt"
+                  style="color: var(--primary-color); margin-left: 8px"
+                ></i>
+                القاهرة & دبي
+              </p>
+              <p>
+                <i
+                  class="fas fa-phone"
+                  style="color: var(--primary-color); margin-left: 8px"
+                ></i>
+                +20 100 123 4567
+              </p>
+              <p>
+                <i
+                  class="fas fa-envelope"
+                  style="color: var(--primary-color); margin-left: 8px"
+                ></i>
+                contact@aurora.agency
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2026 Aurora Marketing Agency.
+            <span data-i18n="footer.rights">جميع الحقوق محفوظة.</span>
+          </p>
+          <div>
+            <a href="#" style="margin-left: 1rem; color: var(--text-muted)"
+              >سياسة الخصوصية</a
+            >
+            <a href="#" style="color: var(--text-muted)">الشروط والأحكام</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <button class="scroll-top-btn" aria-label="Scroll to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="js/theme.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/animation.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

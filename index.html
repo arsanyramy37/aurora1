@@ -1,0 +1,882 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aurora Marketing Agency | وكالة تسويق رقمي متكاملة</title>
+    <meta
+      name="description"
+      content="Aurora هي وكالة تسويق رقمي متكاملة تقدم خدمات التسويق عبر وسائل التواصل، الهوية التجارية، الإعلانات المدفوعة، وSEO لتنمية أعمالك."
+    />
+    <meta
+      name="keywords"
+      content="تسويق رقمي, وكالة تسويق, إعلانات مدفوعة, هوية تجارية, SEO, تصميم مواقع, Aurora Marketing"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Aurora Marketing Agency | وكالة تسويق رقمي متكاملة"
+    />
+    <meta
+      property="og:description"
+      content="ارتقِ بعلامتك التجارية مع التسويق الموجه بالبيانات والاستراتيجيات الرقمية المبتكرة."
+    />
+    <meta
+      property="og:image"
+      content="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>"
+    />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <!-- FontAwesome 6 Icons CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Prevent White Flash in Dark Mode -->
+    <script>
+      const THEME_KEY = 'aurora_theme';
+      const theme =
+        localStorage.getItem(THEME_KEY) ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.style.colorScheme = theme;
+    </script>
+  </head>
+  <body>
+    <!-- Page Loader with Ripple Effect -->
+    <div class="page-loader">
+      <div class="loading-ripple"></div>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header class="header">
+      <div class="container">
+        <nav class="navbar">
+          <a href="index.html" class="logo">
+            <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+            <span>Aurora</span>
+          </a>
+
+          <!-- Desktop Navigation Menu -->
+          <ul class="nav-menu nav-menu-desktop">
+            <li>
+              <a href="index.html" class="nav-link active" data-i18n="nav.home"
+                >الرئيسية</a
+              >
+            </li>
+            <li>
+              <a href="about.html" class="nav-link" data-i18n="nav.about"
+                >من نحن</a
+              >
+            </li>
+            <li>
+              <a href="contact.html" class="nav-link" data-i18n="nav.contact"
+                >تواصل معنا</a
+              >
+            </li>
+          </ul>
+
+          <!-- Navigation Actions -->
+          <div class="nav-actions">
+            <!-- Language Switcher -->
+            <div class="lang-switch">
+              <button class="lang-btn active" data-lang="ar">AR</button>
+              <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+
+            <!-- Theme Toggle -->
+            <button class="btn-icon theme-toggle" aria-label="Switch Theme">
+              <i class="fas fa-moon"></i>
+            </button>
+
+            <!-- Desktop CTA -->
+            <a
+              href="contact.html"
+              class="btn btn-primary nav-menu-desktop"
+              data-i18n="nav.cta"
+              >ابدأ الآن</a
+            >
+
+            <!-- Mobile Toggle Hamburger -->
+            <button class="mobile-toggle" aria-label="Open Menu">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Mobile Off-Canvas Drawer -->
+    <div class="drawer-overlay"></div>
+    <div class="mobile-drawer">
+      <div>
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+          "
+        >
+          <a href="index.html" class="logo">
+            <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+            <span>Aurora</span>
+          </a>
+          <button class="drawer-close btn-icon">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <ul style="display: flex; flex-direction: column; gap: 0.5rem">
+          <li style="margin: 0 -0.75rem; padding: 0.75rem">
+            <a href="index.html" class="nav-link active" data-i18n="nav.home"
+              >الرئيسية</a
+            >
+          </li>
+          <li style="margin: 0 -0.75rem; padding: 0.75rem">
+            <a href="about.html" class="nav-link" data-i18n="nav.about"
+              >من نحن</a
+            >
+          </li>
+          <li style="margin: 0 -0.75rem; padding: 0.75rem">
+            <a href="contact.html" class="nav-link" data-i18n="nav.contact"
+              >تواصل معنا</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div style="margin-top: 2rem">
+        <a
+          href="contact.html"
+          class="btn btn-primary"
+          style="width: 100%"
+          data-i18n="nav.cta"
+          >ابدأ الآن</a
+        >
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-glow"></div>
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content animate-fade-left">
+            <div class="section-tag">
+              <i class="fas fa-sparkles"></i>
+              <span data-i18n="hero.tag"
+                >وكالة تسويق مبتكرة من الجيل الجديد</span
+              >
+            </div>
+            <h1>
+              <span data-i18n="hero.title_1">ارتقِ بعلامتك التجارية مع </span>
+              <span class="highlight" data-i18n="hero.title_highlight"
+                >التسويق الموجه بالبيانات</span
+              >
+            </h1>
+            <p data-i18n="hero.desc">
+              Aurora هي وكالة تسويق متكاملة تصمم استراتيجيات رقمية عالية
+              التأثير، وهويات تجارية مميزة، وحملات إعلانية مدفوعة تسرّع نمو
+              أعمالك.
+            </p>
+            <div class="hero-buttons">
+              <a href="contact.html" class="btn btn-primary">
+                <span data-i18n="hero.btn_primary">اطلاق مشروعك الآن</span>
+                <i class="fas fa-arrow-left"></i>
+              </a>
+              <a href="clients.html" class="btn btn-secondary">
+                <span data-i18n="hero.btn_secondary">استكشف أعمالنا</span>
+                <i class="fas fa-play-circle"></i>
+              </a>
+            </div>
+            <div class="hero-trust">
+              <div class="avatar-group">
+                <img
+                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80"
+                  alt="Client Avatar 1"
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80"
+                  alt="Client Avatar 2"
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80"
+                  alt="Client Avatar 3"
+                />
+              </div>
+              <div class="hero-trust-text">
+                <strong>+150 شركة رائدة</strong>
+                <span data-i18n="hero.trust_text"
+                  >ثق بنا لتنمية أعمالهم الرقمية</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Visual Showcase -->
+          <div class="hero-visual animate-fade-right">
+            <div class="hero-card-main scroll-pan">
+              <img
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80"
+                alt="Aurora Dashboard Visual"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Client Logos Marquee -->
+    <section class="marquee-wrapper">
+      <div class="marquee-content">
+        <div class="client-logo-item">
+          <i class="fab fa-apple" style="margin-left: 8px"></i> TECHNO
+        </div>
+        <div class="client-logo-item">
+          <i class="fab fa-google" style="margin-left: 8px"></i> GOOGLX
+        </div>
+        <div class="client-logo-item">
+          <i class="fab fa-amazon" style="margin-left: 8px"></i> AMAZORA
+        </div>
+        <div class="client-logo-item">
+          <i class="fab fa-spotify" style="margin-left: 8px"></i> SOUNDLY
+        </div>
+        <div class="client-logo-item">
+          <i class="fab fa-shopify" style="margin-left: 8px"></i> COMMERCE
+        </div>
+        <div class="client-logo-item">
+          <i class="fab fa-stripe" style="margin-left: 8px"></i> PAYFLOW
+        </div>
+
+        <!-- Duplicate set for seamless continuous ticker -->
+        <div class="client-logo-item">
+          <i class="fab fa-apple" style="margin-left: 8px"></i> TECHNO
+        </div>
+        <div class="client-logo-item">
+          <i class="fab fa-google" style="margin-left: 8px"></i> GOOGLX
+        </div>
+        <div class="client-logo-item">
+          <i class="fab fa-amazon" style="margin-left: 8px"></i> AMAZORA
+        </div>
+        <div class="client-logo-item">
+          <i class="fab fa-spotify" style="margin-left: 8px"></i> SOUNDLY
+        </div>
+        <div class="client-logo-item">
+          <i class="fab fa-shopify" style="margin-left: 8px"></i> COMMERCE
+        </div>
+        <div class="client-logo-item">
+          <i class="fab fa-stripe" style="margin-left: 8px"></i> PAYFLOW
+        </div>
+      </div>
+    </section>
+
+    <!-- About Preview Section -->
+    <section class="section-padding">
+      <div class="container">
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3.5rem;
+            align-items: center;
+          "
+        >
+          <div class="reveal">
+            <div style="position: relative">
+              <img
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
+                alt="Aurora Team"
+                style="
+                  border-radius: var(--radius-lg);
+                  box-shadow: var(--shadow-lg);
+                "
+              />
+            </div>
+          </div>
+          <div class="reveal reveal-delay-1">
+            <div class="section-tag" data-i18n="about_preview.tag">من نحن</div>
+            <h2 class="section-title" data-i18n="about_preview.title">
+              نحوّل الأفكار الإبداعية إلى قادة في السوق
+            </h2>
+            <p
+              class="section-subtitle"
+              style="margin: 0 0 1.5rem 0"
+              data-i18n="about_preview.desc"
+            >
+              في Aurora، ندمج بين التصميم المبتكر، الاستراتيجية النفسية، ومقاييس
+              الأداء لوضع شركتك في طليعة مجالها.
+            </p>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+                margin-bottom: 2rem;
+              "
+            >
+              <div
+                style="
+                  background: var(--bg-surface);
+                  padding: 1.25rem;
+                  border-radius: var(--radius-md);
+                  border: 1px solid var(--border-color);
+                "
+              >
+                <i
+                  class="fas fa-bullseye"
+                  style="
+                    color: var(--primary-color);
+                    font-size: 1.5rem;
+                    margin-bottom: 0.5rem;
+                  "
+                ></i>
+                <h4
+                  data-i18n="about_preview.mission_title"
+                  style="font-size: 1.1rem; font-weight: 700"
+                >
+                  مهمتنا
+                </h4>
+                <p
+                  style="font-size: 0.85rem; color: var(--text-muted)"
+                  data-i18n="about_preview.mission_desc"
+                >
+                  تمكين العلامات التجارية بأحدث أدوات التسويق الرقمي للسيطرة على
+                  أسواقها.
+                </p>
+              </div>
+              <div
+                style="
+                  background: var(--bg-surface);
+                  padding: 1.25rem;
+                  border-radius: var(--radius-md);
+                  border: 1px solid var(--border-color);
+                "
+              >
+                <i
+                  class="fas fa-eye"
+                  style="
+                    color: var(--primary-color);
+                    font-size: 1.5rem;
+                    margin-bottom: 0.5rem;
+                  "
+                ></i>
+                <h4
+                  data-i18n="about_preview.vision_title"
+                  style="font-size: 1.1rem; font-weight: 700"
+                >
+                  رؤيتنا
+                </h4>
+                <p
+                  style="font-size: 0.85rem; color: var(--text-muted)"
+                  data-i18n="about_preview.vision_desc"
+                >
+                  أن نكون الشريك الإبداعي العالمي الأول للمؤسسات الطموحة.
+                </p>
+              </div>
+            </div>
+            <a href="about.html" class="btn btn-outline">
+              <span data-i18n="about_preview.read_more">اعرف المزيد عنا</span>
+              <i class="fas fa-arrow-left"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Services Section -->
+    <section
+      class="section-padding"
+      style="background-color: var(--bg-surface)"
+    >
+      <div class="container">
+        <div class="text-center">
+          <div class="section-tag" data-i18n="services.tag">ماذا نقدم</div>
+          <h2 class="section-title" data-i18n="services.title">
+            حلول تسويقية متكاملة
+          </h2>
+          <p class="section-subtitle" data-i18n="services.subtitle">
+            استراتيجيات مخصصة مصممة لتوسيع نطاق عملك عبر جميع القنوات الرقمية.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <!-- Service 1 -->
+          <div class="service-card reveal">
+            <div class="service-icon"><i class="fas fa-hashtag"></i></div>
+            <h3 data-i18n="services.s1_title">التسويق عبر منصات التواصل</h3>
+            <p data-i18n="services.s1_desc">
+              جذب جمهورك المستهدف على إنستغرام، تيك توك، لينكد إن، وX محتوى
+              استراتيجي وإعلانات موجهة بدقة.
+            </p>
+            <a href="services.html" class="service-link"
+              ><span data-i18n="services.learn_more">اكتشف الخدمة</span>
+              <i class="fas fa-arrow-left"></i
+            ></a>
+          </div>
+
+          <!-- Service 2 -->
+          <div class="service-card reveal reveal-delay-1">
+            <div class="service-icon"><i class="fas fa-palette"></i></div>
+            <h3 data-i18n="services.s2_title">تصميم الهوية التجارية</h3>
+            <p data-i18n="services.s2_desc">
+              ابتكار هوية بصرية لا تُنسى تشمل الشعارات، أدلة العلامة التجارية،
+              ولوحات الألوان المتميزة.
+            </p>
+            <a href="services.html" class="service-link"
+              ><span data-i18n="services.learn_more">اكتشف الخدمة</span>
+              <i class="fas fa-arrow-left"></i
+            ></a>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="service-card reveal reveal-delay-2">
+            <div class="service-icon"><i class="fas fa-pen-nib"></i></div>
+            <h3 data-i18n="services.s3_title">
+              صناعة المحتوى وكتابة الإعلانات
+            </h3>
+            <p data-i18n="services.s3_desc">
+              نصوص إعلانية محفزة للتحويل، إنتاج فيديو احترافي، وتصاميم تروي قصة
+              علمتك الفريدة.
+            </p>
+            <a href="services.html" class="service-link"
+              ><span data-i18n="services.learn_more">اكتشف الخدمة</span>
+              <i class="fas fa-arrow-left"></i
+            ></a>
+          </div>
+
+          <!-- Service 4 -->
+          <div class="service-card reveal reveal-delay-3">
+            <div class="service-icon"><i class="fas fa-ad"></i></div>
+            <h3 data-i18n="services.s4_title">الإعلانات المدفوعة (PPC)</h3>
+            <p data-i18n="services.s4_desc">
+              تحقيق أعلى عائد استثمار من خلال إعلانات Meta و Google و TikTok
+              المحسّنة للتحويلات.
+            </p>
+            <a href="services.html" class="service-link"
+              ><span data-i18n="services.learn_more">اكتشف الخدمة</span>
+              <i class="fas fa-arrow-left"></i
+            ></a>
+          </div>
+
+          <!-- Service 5 -->
+          <div class="service-card reveal">
+            <div class="service-icon">
+              <i class="fas fa-search-location"></i>
+            </div>
+            <h3 data-i18n="services.s5_title">تحسين محركات البحث (SEO)</h3>
+            <p data-i18n="services.s5_desc">
+              الظهور في صدارة نتائج جوجل، زيادة الزيارات المجانية، وبناء سلطة
+              طويلة المدى في مجالك.
+            </p>
+            <a href="services.html" class="service-link"
+              ><span data-i18n="services.learn_more">اكتشف الخدمة</span>
+              <i class="fas fa-arrow-left"></i
+            ></a>
+          </div>
+
+          <!-- Service 6 -->
+          <div class="service-card reveal reveal-delay-1">
+            <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+            <h3 data-i18n="services.s6_title">تصميم وتطوير المواقع</h3>
+            <p data-i18n="services.s6_desc">
+              صفحات هبوط مخصصة، فائقة السرعة، ومصممة خصيصاً لتحويل الزوار إلى
+              عملاء دائمين.
+            </p>
+            <a href="services.html" class="service-link"
+              ><span data-i18n="services.learn_more">اكتشف الخدمة</span>
+              <i class="fas fa-arrow-left"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Statistics Counter Section -->
+    <section class="stats-banner">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <h3 class="stat-number" data-target="150" data-suffix="+">0</h3>
+            <p data-i18n="stats.projects">مشروع مُنجز</p>
+          </div>
+          <div class="stat-item">
+            <h3 class="stat-number" data-target="98" data-suffix="%">0</h3>
+            <p data-i18n="stats.satisfaction">نسبة رضا العملاء</p>
+          </div>
+          <div class="stat-item">
+            <h3 class="stat-number" data-target="320" data-suffix="%">0</h3>
+            <p data-i18n="stats.roi">متوسط زيادة عائد الاستثمار</p>
+          </div>
+          <div class="stat-item">
+            <h3 class="stat-number" data-target="18" data-suffix="+">0</h3>
+            <p data-i18n="stats.awards">جائزة تسويقية</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio / Showcase Preview -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="text-center">
+          <div class="section-tag" data-i18n="portfolio.tag">معرض أعمالنا</div>
+          <h2 class="section-title" data-i18n="portfolio.title">
+            قصص نجاح مختارة
+          </h2>
+        </div>
+
+        <!-- Filters -->
+        <div class="portfolio-filters">
+          <button
+            class="filter-btn active"
+            data-filter="all"
+            data-i18n="portfolio.filter_all"
+          >
+            جميع المشاريع
+          </button>
+          <button
+            class="filter-btn"
+            data-filter="social"
+            data-i18n="portfolio.filter_social"
+          >
+            سوشيال ميديا
+          </button>
+          <button
+            class="filter-btn"
+            data-filter="brand"
+            data-i18n="portfolio.filter_brand"
+          >
+            هوية تجارية
+          </button>
+          <button
+            class="filter-btn"
+            data-filter="ads"
+            data-i18n="portfolio.filter_ads"
+          >
+            إعلانات مدفوعة
+          </button>
+          <button
+            class="filter-btn"
+            data-filter="web"
+            data-i18n="portfolio.filter_web"
+          >
+            تصميم مواقع
+          </button>
+        </div>
+
+        <div class="portfolio-grid">
+          <!-- Project 1 -->
+          <div class="portfolio-card reveal" data-category="ads">
+            <div class="portfolio-image">
+              <img
+                src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=600&q=80"
+                alt="Luxe Fashion"
+              />
+              <div class="portfolio-overlay">
+                <a
+                  href="clients.html"
+                  class="btn btn-primary"
+                  data-i18n="portfolio.view_case"
+                  >عرض حالة الدراسة</a
+                >
+              </div>
+            </div>
+            <div class="portfolio-body">
+              <div class="portfolio-category">إعلانات مدفوعة</div>
+              <h3 class="portfolio-title" data-i18n="portfolio.p1_title">
+                توسيع علامة أزياء فاخرة
+              </h3>
+              <p class="portfolio-desc" data-i18n="portfolio.p1_desc">
+                نمو الإيرادات بنسبة +320% عبر إعلانات مدفوعة وتجديد الهوية
+                البصرية.
+              </p>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="portfolio-card reveal reveal-delay-1" data-category="web">
+            <div class="portfolio-image">
+              <img
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80"
+                alt="Fintech App"
+              />
+              <div class="portfolio-overlay">
+                <a
+                  href="clients.html"
+                  class="btn btn-primary"
+                  data-i18n="portfolio.view_case"
+                  >عرض حالة الدراسة</a
+                >
+              </div>
+            </div>
+            <div class="portfolio-body">
+              <div class="portfolio-category">تصميم مواقع</div>
+              <h3 class="portfolio-title" data-i18n="portfolio.p2_title">
+                حملة إطلاق تطبيق مالي (Fintech)
+              </h3>
+              <p class="portfolio-desc" data-i18n="portfolio.p2_desc">
+                تحقيق أكثر من 100 ألف تنزيل للتطبيق خلال 60 يوماً.
+              </p>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div
+            class="portfolio-card reveal reveal-delay-2"
+            data-category="brand"
+          >
+            <div class="portfolio-image">
+              <img
+                src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80"
+                alt="Tech Redesign"
+              />
+              <div class="portfolio-overlay">
+                <a
+                  href="clients.html"
+                  class="btn btn-primary"
+                  data-i18n="portfolio.view_case"
+                  >عرض حالة الدراسة</a
+                >
+              </div>
+            </div>
+            <div class="portfolio-body">
+              <div class="portfolio-category">هوية تجارية</div>
+              <h3 class="portfolio-title" data-i18n="portfolio.p3_title">
+                إعادة تصميم منصة تقنية
+              </h3>
+              <p class="portfolio-desc" data-i18n="portfolio.p3_desc">
+                واجهة مستخدم حديثة زادت نسبة التحويل بمقدار 4.5%.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section-padding testimonials-section">
+      <div class="container">
+        <div class="text-center">
+          <div class="section-tag" data-i18n="testimonials.tag">
+            آراء العملاء
+          </div>
+          <h2 class="section-title" data-i18n="testimonials.title">
+            ماذا يقول شركاؤنا عن Aurora
+          </h2>
+        </div>
+
+        <div class="testimonials-slider">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-card">
+            <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+            <div class="stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text" data-i18n="testimonials.t1_text">
+              غيرت Aurora حضورنا الرقمي بالكامل. أثمرت استراتيجية الإعلانات
+              المدفوعة عن أعلى عائد استثمار ربع سنوي لنا منذ الإطلاق. شريك
+              استراتيجي حقيقي!
+            </p>
+            <div class="testimonial-user">
+              <img
+                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&q=80"
+                alt="Sarah Jenkins"
+              />
+              <div class="user-details">
+                <h4 data-i18n="testimonials.t1_name">سارة جينكينز</h4>
+                <p data-i18n="testimonials.t1_role">
+                  مديرة التسويق، NovaTech Global
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-card" style="display: none">
+            <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+            <div class="stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text" data-i18n="testimonials.t2_text">
+              العمل مع فريق Aurora كان كامتلاك قسم تسويق داخلي نخبي. إعادة بناء
+              الهوية والموقع تجاوزت كافة التوقعات.
+            </p>
+            <div class="testimonial-user">
+              <img
+                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80"
+                alt="Tariq Al-Mansoor"
+              />
+              <div class="user-details">
+                <h4 data-i18n="testimonials.t2_name">طارق المنصور</h4>
+                <p data-i18n="testimonials.t2_role">المؤسس، Apex Holdings</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div class="slider-controls">
+            <button class="btn-icon slider-prev">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="dot-indicators">
+              <span class="dot active"></span>
+              <span class="dot"></span>
+            </div>
+            <button class="btn-icon slider-next">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="cta-banner">
+          <h2 data-i18n="cta.title">
+            هل أنت مستعد لتحويل استراتيجيتك التسويقية؟
+          </h2>
+          <p data-i18n="cta.subtitle">
+            احجز جلسة استشارية مع خبراء النمو لدينا واحصل على خطة تسويقية مخصصة
+            لمشروعك.
+          </p>
+          <a
+            href="contact.html"
+            class="btn btn-cta-secondary"
+            data-i18n="cta.btn"
+            >تواصل معنا اليوم</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="logo" style="margin-bottom: 1rem">
+              <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+              <span>Aurora</span>
+            </a>
+            <p data-i18n="footer.brand_desc">
+              Aurora هي وكالة تسويق مبتكرة تقود النمو الفعلي للأعمال من خلال
+              التصميم، البيانات، وصناعة المحتوى الإبداعي.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-link" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="X Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 data-i18n="footer.quick_links">روابط سريعة</h4>
+            <div class="footer-links">
+              <a href="index.html" data-i18n="nav.home">الرئيسية</a>
+              <a href="about.html" data-i18n="nav.about">من نحن</a>
+              <a href="contact.html" data-i18n="nav.contact">تواصل معنا</a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 data-i18n="footer.services_heading">خدماتنا الرئيسية</h4>
+            <div class="footer-links">
+              <a href="services.html" data-i18n="services.s1_title"
+                >التسويق عبر منصات التواصل</a
+              >
+              <a href="services.html" data-i18n="services.s2_title"
+                >تصميم الهوية التجارية</a
+              >
+              <a href="services.html" data-i18n="services.s3_title"
+                >صناعة المحتوى والإعلانات</a
+              >
+              <a href="services.html" data-i18n="services.s4_title"
+                >الإعلانات المدفوعة (PPC)</a
+              >
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 data-i18n="footer.contact_heading">معلومات التواصل</h4>
+            <div class="footer-links">
+              <p>
+                <i
+                  class="fas fa-map-marker-alt"
+                  style="color: var(--primary-color); margin-left: 8px"
+                ></i>
+                القاهرة & دبي
+              </p>
+              <p>
+                <i
+                  class="fas fa-phone"
+                  style="color: var(--primary-color); margin-left: 8px"
+                ></i>
+                +20 100 123 4567
+              </p>
+              <p>
+                <i
+                  class="fas fa-envelope"
+                  style="color: var(--primary-color); margin-left: 8px"
+                ></i>
+                contact@aurora.agency
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2026 Aurora Marketing Agency.
+            <span data-i18n="footer.rights">جميع الحقوق محفوظة.</span>
+          </p>
+          <div>
+            <a href="#" style="margin-left: 1rem; color: var(--text-muted)"
+              >سياسة الخصوصية</a
+            >
+            <a href="#" style="color: var(--text-muted)">الشروط والأحكام</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll to top button -->
+    <button class="scroll-top-btn" aria-label="Scroll to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="js/theme.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/animation.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

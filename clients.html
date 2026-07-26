@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>عملاؤنا وأعمالنا | Aurora Marketing Agency</title>
+    <meta
+      name="description"
+      content="استكشف المعرض الكامل لأعمال وشركاء نجاح وكالة Aurora للتسويق الرقمي وحالات الدراسة للعلامات التجارية العالمية."
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>"
+    />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <!-- FontAwesome 6 Icons CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Prevent White Flash in Dark Mode -->
+    <script>
+      const THEME_KEY = 'aurora_theme';
+      const theme =
+        localStorage.getItem(THEME_KEY) ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.style.colorScheme = theme;
+    </script>
+  </head>
+  <body>
+    <!-- Page Loader with Ripple Effect -->
+    <div class="page-loader">
+      <div class="loading-ripple"></div>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header class="header">
+      <div class="container">
+        <nav class="navbar">
+          <a href="index.html" class="logo">
+            <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+            <span>Aurora</span>
+          </a>
+
+          <ul class="nav-menu nav-menu-desktop">
+            <li>
+              <a href="index.html" class="nav-link" data-i18n="nav.home"
+                >الرئيسية</a
+              >
+            </li>
+            <li>
+              <a href="about.html" class="nav-link" data-i18n="nav.about"
+                >من نحن</a
+              >
+            </li>
+            <li>
+              <a href="contact.html" class="nav-link" data-i18n="nav.contact"
+                >تواصل معنا</a
+              >
+            </li>
+          </ul>
+
+          <div class="nav-actions">
+            <div class="lang-switch">
+              <button class="lang-btn active" data-lang="ar">AR</button>
+              <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+
+            <button class="btn-icon theme-toggle" aria-label="Switch Theme">
+              <i class="fas fa-moon"></i>
+            </button>
+
+            <a
+              href="contact.html"
+              class="btn btn-primary nav-menu-desktop"
+              data-i18n="nav.cta"
+              >ابدأ الآن</a
+            >
+
+            <button class="mobile-toggle" aria-label="Open Menu">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Mobile Off-Canvas Drawer -->
+    <div class="drawer-overlay"></div>
+    <div class="mobile-drawer">
+      <div>
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+          "
+        >
+          <a href="index.html" class="logo">
+            <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+            <span>Aurora</span>
+          </a>
+          <button class="drawer-close btn-icon">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <ul style="display: flex; flex-direction: column; gap: 0.5rem">
+          <li style="margin: 0 -0.75rem; padding: 0.75rem">
+            <a href="index.html" class="nav-link active" data-i18n="nav.home"
+              >الرئيسية</a
+            >
+          </li>
+          <li style="margin: 0 -0.75rem; padding: 0.75rem">
+            <a href="about.html" class="nav-link" data-i18n="nav.about"
+              >من نحن</a
+            >
+          </li>
+          <li style="margin: 0 -0.75rem; padding: 0.75rem">
+            <a href="contact.html" class="nav-link" data-i18n="nav.contact"
+              >تواصل معنا</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div style="margin-top: 2rem">
+        <a
+          href="contact.html"
+          class="btn btn-primary"
+          style="width: 100%"
+          data-i18n="nav.cta"
+          >ابدأ الآن</a
+        >
+      </div>
+    </div>
+
+    <!-- Page Banner -->
+    <section class="hero" style="padding-bottom: 4rem">
+      <div class="container text-center">
+        <div class="section-tag" data-i18n="portfolio.tag">معرض أعمالنا</div>
+        <h1 class="section-title" data-i18n="portfolio.title">
+          قصص نجاح مختارة
+        </h1>
+        <p class="section-subtitle" data-i18n="portfolio.subtitle">
+          استكشف كيف ساعدنا عملاءنا على مضاعفة إيراداتهم وحصتهم السوقية.
+        </p>
+      </div>
+    </section>
+
+    <!-- Projects Grid with Filtering -->
+    <section class="section-padding">
+      <div class="container">
+        <!-- Filter Buttons -->
+        <div class="portfolio-filters">
+          <button
+            class="filter-btn active"
+            data-filter="all"
+            data-i18n="portfolio.filter_all"
+          >
+            جميع المشاريع
+          </button>
+          <button
+            class="filter-btn"
+            data-filter="social"
+            data-i18n="portfolio.filter_social"
+          >
+            سوشيال ميديا
+          </button>
+          <button
+            class="filter-btn"
+            data-filter="brand"
+            data-i18n="portfolio.filter_brand"
+          >
+            هوية تجارية
+          </button>
+          <button
+            class="filter-btn"
+            data-filter="ads"
+            data-i18n="portfolio.filter_ads"
+          >
+            إعلانات مدفوعة
+          </button>
+          <button
+            class="filter-btn"
+            data-filter="web"
+            data-i18n="portfolio.filter_web"
+          >
+            تصميم مواقع
+          </button>
+        </div>
+
+        <div class="portfolio-grid">
+          <!-- Project 1 -->
+          <div class="portfolio-card reveal" data-category="ads">
+            <div class="portfolio-image">
+              <img
+                src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=600&q=80"
+                alt="Luxe Fashion"
+              />
+              <div class="portfolio-overlay">
+                <a href="contact.html" class="btn btn-primary"
+                  >مناقشة مشروع مشابه</a
+                >
+              </div>
+            </div>
+            <div class="portfolio-body">
+              <div class="portfolio-category">إعلانات مدفوعة</div>
+              <h3 class="portfolio-title" data-i18n="portfolio.p1_title">
+                توسيع علامة أزياء فاخرة
+              </h3>
+              <p class="portfolio-desc" data-i18n="portfolio.p1_desc">
+                نمو الإيرادات بنسبة +320% عبر إعلانات مدفوعة وتجديد الهوية
+                البصرية.
+              </p>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="portfolio-card reveal reveal-delay-1" data-category="web">
+            <div class="portfolio-image">
+              <img
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80"
+                alt="Fintech App"
+              />
+              <div class="portfolio-overlay">
+                <a href="contact.html" class="btn btn-primary"
+                  >مناقشة مشروع مشابه</a
+                >
+              </div>
+            </div>
+            <div class="portfolio-body">
+              <div class="portfolio-category">تصميم مواقع</div>
+              <h3 class="portfolio-title" data-i18n="portfolio.p2_title">
+                حملة إطلاق تطبيق مالي (Fintech)
+              </h3>
+              <p class="portfolio-desc" data-i18n="portfolio.p2_desc">
+                تحقيق أكثر من 100 ألف تنزيل للتطبيق خلال 60 يوماً.
+              </p>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div
+            class="portfolio-card reveal reveal-delay-2"
+            data-category="brand"
+          >
+            <div class="portfolio-image">
+              <img
+                src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80"
+                alt="Tech Redesign"
+              />
+              <div class="portfolio-overlay">
+                <a href="contact.html" class="btn btn-primary"
+                  >مناقشة مشروع مشابه</a
+                >
+              </div>
+            </div>
+            <div class="portfolio-body">
+              <div class="portfolio-category">هوية تجارية</div>
+              <h3 class="portfolio-title" data-i18n="portfolio.p3_title">
+                إعادة تصميم منصة تقنية
+              </h3>
+              <p class="portfolio-desc" data-i18n="portfolio.p3_desc">
+                واجهة مستخدم حديثة زادت نسبة التحويل بمقدار 4.5%.
+              </p>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="portfolio-card reveal" data-category="social">
+            <div class="portfolio-image">
+              <img
+                src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=600&q=80"
+                alt="Gourmet Coffee"
+              />
+              <div class="portfolio-overlay">
+                <a href="contact.html" class="btn btn-primary"
+                  >مناقشة مشروع مشابه</a
+                >
+              </div>
+            </div>
+            <div class="portfolio-body">
+              <div class="portfolio-category">سوشيال ميديا</div>
+              <h3 class="portfolio-title" data-i18n="portfolio.p4_title">
+                استراتيجية سوشيال لمقهى عالمي
+              </h3>
+              <p class="portfolio-desc" data-i18n="portfolio.p4_desc">
+                حملة تيك توك وريلز واسعة الانتشار حققت 2.5 مليون مشاهدة.
+              </p>
+            </div>
+          </div>
+
+          <!-- Project 5 -->
+          <div
+            class="portfolio-card reveal reveal-delay-1"
+            data-category="brand"
+          >
+            <div class="portfolio-image">
+              <img
+                src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=600&q=80"
+                alt="Retail Brand"
+              />
+              <div class="portfolio-overlay">
+                <a href="contact.html" class="btn btn-primary"
+                  >مناقشة مشروع مشابه</a
+                >
+              </div>
+            </div>
+            <div class="portfolio-body">
+              <div class="portfolio-category">هوية تجارية</div>
+              <h3 class="portfolio-title">إعادة إطلاق سلسة متاجر تجزئة</h3>
+              <p class="portfolio-desc">
+                تحديث الهوية البصرية لـ 40 فرعاً وزيادة مبيعات المتاجر بنسبة
+                45%.
+              </p>
+            </div>
+          </div>
+
+          <!-- Project 6 -->
+          <div class="portfolio-card reveal reveal-delay-2" data-category="ads">
+            <div class="portfolio-image">
+              <img
+                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=600&q=80"
+                alt="SaaS Campaign"
+              />
+              <div class="portfolio-overlay">
+                <a href="contact.html" class="btn btn-primary"
+                  >مناقشة مشروع مشابه</a
+                >
+              </div>
+            </div>
+            <div class="portfolio-body">
+              <div class="portfolio-category">إعلانات مدفوعة</div>
+              <h3 class="portfolio-title">حملة اكتساب مشتركي منصة SaaS</h3>
+              <p class="portfolio-desc">
+                مضاعفة المشتركين الشهريين بخفض تكلفة الاستحواذ CAC بنسبة 35%.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Client Logos Showcase -->
+    <section
+      class="section-padding"
+      style="background-color: var(--bg-surface)"
+    >
+      <div class="container">
+        <div class="text-center" style="margin-bottom: 3rem">
+          <div class="section-tag">شركاء النجاح</div>
+          <h2 class="section-title">علامات تجارية نعتز بالشراكة معها</h2>
+        </div>
+
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+          "
+        >
+          <div class="client-logo-item">
+            <i class="fab fa-apple" style="margin-left: 8px"></i> TECHNO
+          </div>
+          <div class="client-logo-item">
+            <i class="fab fa-google" style="margin-left: 8px"></i> GOOGLX
+          </div>
+          <div class="client-logo-item">
+            <i class="fab fa-amazon" style="margin-left: 8px"></i> AMAZORA
+          </div>
+          <div class="client-logo-item">
+            <i class="fab fa-spotify" style="margin-left: 8px"></i> SOUNDLY
+          </div>
+          <div class="client-logo-item">
+            <i class="fab fa-shopify" style="margin-left: 8px"></i> COMMERCE
+          </div>
+          <div class="client-logo-item">
+            <i class="fab fa-stripe" style="margin-left: 8px"></i> PAYFLOW
+          </div>
+          <div class="client-logo-item">
+            <i class="fab fa-slack" style="margin-left: 8px"></i> TASKHUB
+          </div>
+          <div class="client-logo-item">
+            <i class="fab fa-figma" style="margin-left: 8px"></i> CREATO
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="cta-banner">
+          <h2 data-i18n="cta.title">
+            هل أنت مستعد لتحويل استراتيجيتك التسويقية؟
+          </h2>
+          <p data-i18n="cta.subtitle">
+            احجز جلسة استشارية مع خبراء النمو لدينا واحصل على خطة تسويقية مخصصة
+            لمشروعك.
+          </p>
+          <a
+            href="contact.html"
+            class="btn btn-cta-secondary"
+            data-i18n="cta.btn"
+            >تواصل معنا اليوم</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="logo" style="margin-bottom: 1rem">
+              <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+              <span>Aurora</span>
+            </a>
+            <p data-i18n="footer.brand_desc">
+              Aurora هي وكالة تسويق مبتكرة تقود النمو الفعلي للأعمال من خلال
+              التصميم، البيانات، وصناعة المحتوى الإبداعي.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-link" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="X Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 data-i18n="footer.quick_links">روابط سريعة</h4>
+            <div class="footer-links">
+              <a href="index.html" data-i18n="nav.home">الرئيسية</a>
+              <a href="about.html" data-i18n="nav.about">من نحن</a>
+              <a href="contact.html" data-i18n="nav.contact">تواصل معنا</a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 data-i18n="footer.services_heading">خدماتنا الرئيسية</h4>
+            <div class="footer-links">
+              <a href="services.html" data-i18n="services.s1_title"
+                >التسويق عبر منصات التواصل</a
+              >
+              <a href="services.html" data-i18n="services.s2_title"
+                >تصميم الهوية التجارية</a
+              >
+              <a href="services.html" data-i18n="services.s3_title"
+                >صناعة المحتوى والإعلانات</a
+              >
+              <a href="services.html" data-i18n="services.s4_title"
+                >الإعلانات المدفوعة (PPC)</a
+              >
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 data-i18n="footer.contact_heading">معلومات التواصل</h4>
+            <div class="footer-links">
+              <p>
+                <i
+                  class="fas fa-map-marker-alt"
+                  style="color: var(--primary-color); margin-left: 8px"
+                ></i>
+                القاهرة & دبي
+              </p>
+              <p>
+                <i
+                  class="fas fa-phone"
+                  style="color: var(--primary-color); margin-left: 8px"
+                ></i>
+                +20 100 123 4567
+              </p>
+              <p>
+                <i
+                  class="fas fa-envelope"
+                  style="color: var(--primary-color); margin-left: 8px"
+                ></i>
+                contact@aurora.agency
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2026 Aurora Marketing Agency.
+            <span data-i18n="footer.rights">جميع الحقوق محفوظة.</span>
+          </p>
+          <div>
+            <a href="#" style="margin-left: 1rem; color: var(--text-muted)"
+              >سياسة الخصوصية</a
+            >
+            <a href="#" style="color: var(--text-muted)">الشروط والأحكام</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <button class="scroll-top-btn" aria-label="Scroll to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="js/theme.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/animation.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

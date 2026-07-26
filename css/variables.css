@@ -1,0 +1,132 @@
+/* ==========================================================================
+   Aurora Marketing Agency - CSS Design System & Variables
+   Primary Color: #1AB4AA (Teal / Cyan Accent)
+   Support: Light Mode & Dark Mode + RTL / LTR Responsive Design
+   ========================================================================== */
+
+:root {
+  /* Brand Colors */
+  --primary-color: #1ab4aa;
+  --primary-hover: #14938b;
+  --primary-light: rgba(26, 180, 170, 0.12);
+  --primary-glow: rgba(26, 180, 170, 0.35);
+  --secondary-color: #ffffff;
+
+  /* Light Theme Defaults */
+  --bg-main: #ffffff;
+  --bg-surface: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-glass: rgba(255, 255, 255, 0.85);
+
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --text-inverse: #ffffff;
+
+  --border-color: #e2e8f0;
+  --border-hover: #cbd5e1;
+
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 16px 36px rgba(15, 23, 42, 0.12);
+  --shadow-glow: 0 0 25px rgba(26, 180, 170, 0.25);
+
+  --gradient-primary: linear-gradient(135deg, #1ab4aa 0%, #0d9488 100%);
+  --gradient-dark: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  --gradient-hero: linear-gradient(
+    135deg,
+    rgba(26, 180, 170, 0.08) 0%,
+    rgba(248, 250, 252, 0.5) 100%
+  );
+
+  /* Typography */
+  --font-en: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-ar: 'Readex Pro', system-ui, -apple-system, sans-serif;
+  --font-current: var(--font-en);
+
+  /* Layout & Spacing */
+  --container-max-width: 1280px;
+  --navbar-height: 80px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  /* Transition */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark Theme Overrides */
+[data-theme='dark'] {
+  --bg-main: #0f172a;
+  --bg-surface: #1e293b;
+  --bg-card: #111827;
+  --bg-glass: rgba(17, 24, 39, 0.85);
+
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-inverse: #0f172a;
+
+  --border-color: #1e293b;
+  --border-hover: #334155;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 30px rgba(26, 180, 170, 0.35);
+
+  --gradient-hero: linear-gradient(
+    135deg,
+    rgba(26, 180, 170, 0.12) 0%,
+    rgba(15, 23, 42, 0.95) 100%
+  );
+}
+
+/* RTL Typography Override */
+[dir='rtl'] {
+  --font-current: var(--font-ar);
+}
+
+/* Reduce Bold Weight for Arabic Text */
+[dir='rtl'] * {
+  font-weight: 500 !important;
+}
+
+/* Exclude Icons from Font Weight Override - Ensures Icons Display Properly */
+[dir='rtl'] i,
+[dir='rtl'] .fa,
+[dir='rtl'] [class*='fa-'],
+[dir='rtl'] svg,
+[dir='rtl'] .btn-icon,
+[dir='rtl'] .btn-icon i,
+[dir='rtl'] .mobile-toggle,
+[dir='rtl'] .mobile-toggle i,
+[dir='rtl'] .logo-icon,
+[dir='rtl'] .logo-icon i,
+[dir='rtl'] .theme-toggle,
+[dir='rtl'] .theme-toggle i,
+[dir='rtl'] .drawer-close,
+[dir='rtl'] .drawer-close i {
+  font-weight: 900 !important;
+  font-family: 'Font Awesome 6 Free', sans-serif !important;
+}
+
+[dir='rtl'] .section-title,
+[dir='rtl'] h1,
+[dir='rtl'] h2,
+[dir='rtl'] h3,
+[dir='rtl'] h4,
+[dir='rtl'] h5,
+[dir='rtl'] h6 {
+  font-weight: 600 !important;
+}
+
+[dir='rtl'] .logo {
+  font-weight: 700 !important;
+}
+
+[dir='rtl'] .btn,
+[dir='rtl'] .nav-link {
+  font-weight: 400 !important;
+}

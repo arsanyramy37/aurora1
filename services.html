@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>خدماتنا | Aurora Marketing Agency</title>
+    <meta
+      name="description"
+      content="خدمات التسويق الرقمي المتكاملة من Aurora: سوشيال ميديا، تصميم هويات تجارية، إعلانات مدفوعة Meta & Google، تحسين SEO، وتطوير مواقع."
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>"
+    />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <!-- FontAwesome 6 Icons CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Prevent White Flash in Dark Mode -->
+    <script>
+      const THEME_KEY = 'aurora_theme';
+      const theme =
+        localStorage.getItem(THEME_KEY) ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.style.colorScheme = theme;
+    </script>
+  </head>
+  <body>
+    <!-- Page Loader with Ripple Effect -->
+    <div class="page-loader">
+      <div class="loading-ripple"></div>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header class="header">
+      <div class="container">
+        <nav class="navbar">
+          <a href="index.html" class="logo">
+            <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+            <span>Aurora</span>
+          </a>
+
+          <ul class="nav-menu nav-menu-desktop">
+            <li>
+              <a href="index.html" class="nav-link" data-i18n="nav.home"
+                >الرئيسية</a
+              >
+            </li>
+            <li>
+              <a href="about.html" class="nav-link" data-i18n="nav.about"
+                >من نحن</a
+              >
+            </li>
+            <li>
+              <a href="contact.html" class="nav-link" data-i18n="nav.contact"
+                >تواصل معنا</a
+              >
+            </li>
+          </ul>
+
+          <div class="nav-actions">
+            <div class="lang-switch">
+              <button class="lang-btn active" data-lang="ar">AR</button>
+              <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+
+            <button class="btn-icon theme-toggle" aria-label="Switch Theme">
+              <i class="fas fa-moon"></i>
+            </button>
+
+            <a
+              href="contact.html"
+              class="btn btn-primary nav-menu-desktop"
+              data-i18n="nav.cta"
+              >ابدأ الآن</a
+            >
+
+            <button class="mobile-toggle" aria-label="Open Menu">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Mobile Off-Canvas Drawer -->
+    <div class="drawer-overlay"></div>
+    <div class="mobile-drawer">
+      <div>
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+          "
+        >
+          <a href="index.html" class="logo">
+            <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+            <span>Aurora</span>
+          </a>
+          <button class="drawer-close btn-icon">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <ul style="display: flex; flex-direction: column; gap: 0.5rem">
+          <li style="margin: 0 -0.75rem; padding: 0.75rem">
+            <a href="index.html" class="nav-link active" data-i18n="nav.home"
+              >الرئيسية</a
+            >
+          </li>
+          <li style="margin: 0 -0.75rem; padding: 0.75rem">
+            <a href="about.html" class="nav-link" data-i18n="nav.about"
+              >من نحن</a
+            >
+          </li>
+          <li style="margin: 0 -0.75rem; padding: 0.75rem">
+            <a href="contact.html" class="nav-link" data-i18n="nav.contact"
+              >تواصل معنا</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div style="margin-top: 2rem">
+        <a
+          href="contact.html"
+          class="btn btn-primary"
+          style="width: 100%"
+          data-i18n="nav.cta"
+          >ابدأ الآن</a
+        >
+      </div>
+    </div>
+
+    <!-- Page Banner -->
+    <section class="hero" style="padding-bottom: 4rem">
+      <div class="container text-center">
+        <div class="section-tag" data-i18n="services.tag">ماذا نقدم</div>
+        <h1 class="section-title" data-i18n="services.title">
+          حلول تسويقية متكاملة
+        </h1>
+        <p class="section-subtitle" data-i18n="services.subtitle">
+          استراتيجيات مخصصة مصممة لتوسيع نطاق عملك عبر جميع القنوات الرقمية.
+        </p>
+      </div>
+    </section>
+
+    <!-- 8 Detailed Core Services -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="services-grid">
+          <!-- Service 1: Social Media -->
+          <div class="service-card reveal">
+            <div class="service-icon"><i class="fas fa-hashtag"></i></div>
+            <h3 data-i18n="services.s1_title">التسويق عبر منصات التواصل</h3>
+            <p data-i18n="services.s1_desc">
+              جذب جمهورك المستهدف على إنستغرام، تيك توك، لينكد إن، وX محتوى
+              استراتيجي وإعلانات موجهة بدقة.
+            </p>
+            <ul
+              style="
+                color: var(--text-muted);
+                font-size: 0.88rem;
+                margin-bottom: 1.5rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.4rem;
+              "
+            >
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--primary-color)"
+                ></i>
+                إدارة كاملة للحسابات الرقمية
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--primary-color)"
+                ></i>
+                خطط محتوى شهرية مبتكرة
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--primary-color)"
+                ></i>
+                تفاعل نشط مع الجمهور والعملاء
+              </li>
+            </ul>
+            <a href="contact.html" class="btn btn-outline" style="width: 100%"
+              >طلب الخدمة</a
+            >
+          </div>
+
+          <!-- Service 2: Brand Identity -->
+          <div class="service-card reveal reveal-delay-1">
+            <div class="service-icon"><i class="fas fa-palette"></i></div>
+            <h3 data-i18n="services.s2_title">تصميم الهوية التجارية</h3>
+            <p data-i18n="services.s2_desc">
+              ابتكار هوية بصرية لا تُنسى تشمل الشعارات، أدلة العلامة التجارية،
+              ولوحات الألوان المتميزة.
+            </p>
+            <ul
+              style="
+                color: var(--text-muted);
+                font-size: 0.88rem;
+                margin-bottom: 1.5rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.4rem;
+              "
+            >
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--primary-color)"
+                ></i>
+                تصميم شعارات احترافية (Logos)
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--primary-color)"
+                ></i>
+                دليل الهوية البصرية الشامل
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--primary-color)"
+                ></i>
+                تصاميم المطبوعات والتغليف
+              </li>
+            </ul>
+            <a href="contact.html" class="btn btn-outline" style="width: 100%"
+              >طلب الخدمة</a
+            >
+          </div>
+
+          <!-- Service 3: Content Creation -->
+          <div class="service-card reveal reveal-delay-2">
+            <div class="service-icon"><i class="fas fa-pen-nib"></i></div>
+            <h3 data-i18n="services.s3_title">
+              صناعة المحتوى وكتابة الإعلانات
+            </h3>
+            <p data-i18n="services.s3_desc">
+              نصوص إعلانية محفزة للتحويل، إنتاج فيديو احترافي، وتصاميم تروي قصة
+              علمتك الفريدة.
+            </p>
+            <ul
+              style="
+                color: var(--text-muted);
+                font-size: 0.88rem;
+                margin-bottom: 1.5rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.4rem;
+              "
+            >
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--primary-color)"
+                ></i>
+                كتابة نصوص إعلانية Copywriting
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--primary-color)"
+                ></i>
+                تصوير ومونتاج Reels & TikToks
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--primary-color)"
+                ></i>
+                تصميم جرافيك وموشن جرافيك
+              </li>
+            </ul>
+            <a href="contact.html" class="btn btn-outline" style="width: 100%"
+              >طلب الخدمة</a
+            >
+          </div>
+
+          <!-- Service 4: Paid Ads -->
+          <div class="service-card reveal">
+            <div class="service-icon"><i class="fas fa-ad"></i></div>
+            <h3 data-i18n="services.s4_title">الإعلانات المدفوعة (PPC)</h3>
+            <p data-i18n="services.s4_desc">
+              تحقيق أعلى عائد استثمار من خلال إعلانات Meta و Google و TikTok
+              المحسّنة للتحويلات.
+            </p>
+            <ul
+              style="
+                color: var(--text-muted);
+                font-size: 0.88rem;
+                margin-bottom: 1.5rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.4rem;
+              "
+            >
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--primary-color)"
+                ></i>
+                إعلانات Meta Ads (Facebook/Instagram)
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--primary-color)"
+                ></i>
+                إعلانات البحث واليوتيوب من Google
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--primary-color)"
+                ></i>
+                A/B Testing وتحسين الميزانيات
+              </li>
+            </ul>
+            <a href="contact.html" class="btn btn-outline" style="width: 100%"
+              >طلب الخدمة</a
+            >
+          </div>
+
+          <!-- Service 5: SEO -->
+          <div class="service-card reveal reveal-delay-1">
+            <div class="service-icon">
+              <i class="fas fa-search-location"></i>
+            </div>
+            <h3 data-i18n="services.s5_title">تحسين محركات البحث (SEO)</h3>
+            <p data-i18n="services.s5_desc">
+              الظهور في صدارة نتائج جوجل، زيادة الزيارات المجانية، وبناء سلطة
+              طويلة المدى في مجالك.
+            </p>
+            <ul
+              style="
+                color: var(--text-muted);
+                font-size: 0.88rem;
+                margin-bottom: 1.5rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.4rem;
+              "
+            >
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--primary-color)"
+                ></i>
+                بحث واختيار الكلمات المفتاحية
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--primary-color)"
+                ></i>
+                SEO الداخلي والتقني On-Page & Technical
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--primary-color)"
+                ></i>
+                بناء الروابط الخلفية Backlinks
+              </li>
+            </ul>
+            <a href="contact.html" class="btn btn-outline" style="width: 100%"
+              >طلب الخدمة</a
+            >
+          </div>
+
+          <!-- Service 6: Web Design -->
+          <div class="service-card reveal reveal-delay-2">
+            <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+            <h3 data-i18n="services.s6_title">تصميم وتطوير المواقع</h3>
+            <p data-i18n="services.s6_desc">
+              صفحات هبوط مخصصة، فائقة السرعة، ومصممة خصيصاً لتحويل الزوار إلى
+              عملاء دائمين.
+            </p>
+            <ul
+              style="
+                color: var(--text-muted);
+                font-size: 0.88rem;
+                margin-bottom: 1.5rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.4rem;
+              "
+            >
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--primary-color)"
+                ></i>
+                تصميم صفحات هبوط High-Converting
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--primary-color)"
+                ></i>
+                مواقع متجاوبة للغاية وبارعة الأداء
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--primary-color)"
+                ></i>
+                تحسين تجربة المستخدم UX/UI
+              </li>
+            </ul>
+            <a href="contact.html" class="btn btn-outline" style="width: 100%"
+              >طلب الخدمة</a
+            >
+          </div>
+
+          <!-- Service 7: Email Marketing -->
+          <div class="service-card reveal">
+            <div class="service-icon"><i class="fas fa-paper-plane"></i></div>
+            <h3 data-i18n="services.s7_title">التسويق عبر البريد الإلكتروني</h3>
+            <p data-i18n="services.s7_desc">
+              مسارات إلكترونية مؤتمنة، حملات ترويجية، وحملات إعادة استهداف
+              لزيادة المبيعات المتكررة.
+            </p>
+            <ul
+              style="
+                color: var(--text-muted);
+                font-size: 0.88rem;
+                margin-bottom: 1.5rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.4rem;
+              "
+            >
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--primary-color)"
+                ></i>
+                إعداد أتمتة الرسائل Klaviyo/Mailchimp
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--primary-color)"
+                ></i>
+                نشرات إخبارية وعروض ترويجية
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--primary-color)"
+                ></i>
+                زيادة المبيعات المتكررة LTV
+              </li>
+            </ul>
+            <a href="contact.html" class="btn btn-outline" style="width: 100%"
+              >طلب الخدمة</a
+            >
+          </div>
+
+          <!-- Service 8: Analytics & CRO -->
+          <div class="service-card reveal reveal-delay-1">
+            <div class="service-icon"><i class="fas fa-chart-pie"></i></div>
+            <h3 data-i18n="services.s8_title">تحليلات التسويق ومؤشرات النمو</h3>
+            <p data-i18n="services.s8_desc">
+              تحليل متعمق للبيانات، تحسين معدلات التحويل (CRO)، وتقارير أداء
+              دورية شفافة.
+            </p>
+            <ul
+              style="
+                color: var(--text-muted);
+                font-size: 0.88rem;
+                margin-bottom: 1.5rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.4rem;
+              "
+            >
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--primary-color)"
+                ></i>
+                إعداد Google Analytics 4 & Pixels
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--primary-color)"
+                ></i>
+                تقارير أداء دورية تفاعلية
+              </li>
+              <li>
+                <i
+                  class="fas fa-check-circle"
+                  style="color: var(--primary-color)"
+                ></i>
+                تحسين معدلات تحويل الزوار CRO
+              </li>
+            </ul>
+            <a href="contact.html" class="btn btn-outline" style="width: 100%"
+              >طلب الخدمة</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work Process Section -->
+    <section
+      class="section-padding"
+      style="background-color: var(--bg-surface)"
+    >
+      <div class="container">
+        <div class="text-center">
+          <div class="section-tag">منهجية العمل</div>
+          <h2 class="section-title">كيف نعمل معك في 4 خطوات متكاملة</h2>
+        </div>
+
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+          "
+          class="stats-grid"
+        >
+          <div class="service-card text-center reveal">
+            <div
+              class="service-icon"
+              style="margin: 0 auto 1rem auto; font-size: 1.5rem"
+            >
+              01
+            </div>
+            <h4
+              style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem"
+            >
+              الاكتشاف والبحث
+            </h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted)">
+              دراسة سوقك، منافسيك، وجمهورك المستهدف بعناية.
+            </p>
+          </div>
+          <div class="service-card text-center reveal reveal-delay-1">
+            <div
+              class="service-icon"
+              style="margin: 0 auto 1rem auto; font-size: 1.5rem"
+            >
+              02
+            </div>
+            <h4
+              style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem"
+            >
+              بناء الاستراتيجية
+            </h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted)">
+              صياغة خطة تسويقية محكمة مخصصة لأهداف عملك.
+            </p>
+          </div>
+          <div class="service-card text-center reveal reveal-delay-2">
+            <div
+              class="service-icon"
+              style="margin: 0 auto 1rem auto; font-size: 1.5rem"
+            >
+              03
+            </div>
+            <h4
+              style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem"
+            >
+              التنفيذ الإبداعي
+            </h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted)">
+              إطلاق الحملات وتطوير المحتوى بأعلى دقة جودة.
+            </p>
+          </div>
+          <div class="service-card text-center reveal reveal-delay-3">
+            <div
+              class="service-icon"
+              style="margin: 0 auto 1rem auto; font-size: 1.5rem"
+            >
+              04
+            </div>
+            <h4
+              style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem"
+            >
+              التحسين والنمو
+            </h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted)">
+              متابعة الأرقام يومياً ومضاعفة النتائج الناجحة.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="cta-banner">
+          <h2 data-i18n="cta.title">
+            هل أنت مستعد لتحويل استراتيجيتك التسويقية؟
+          </h2>
+          <p data-i18n="cta.subtitle">
+            احجز جلسة استشارية مع خبراء النمو لدينا واحصل على خطة تسويقية مخصصة
+            لمشروعك.
+          </p>
+          <a
+            href="contact.html"
+            class="btn btn-cta-secondary"
+            data-i18n="cta.btn"
+            >تواصل معنا اليوم</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="logo" style="margin-bottom: 1rem">
+              <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+              <span>Aurora</span>
+            </a>
+            <p data-i18n="footer.brand_desc">
+              Aurora هي وكالة تسويق مبتكرة تقود النمو الفعلي للأعمال من خلال
+              التصميم، البيانات، وصناعة المحتوى الإبداعي.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-link" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="X Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 data-i18n="footer.quick_links">روابط سريعة</h4>
+            <div class="footer-links">
+              <a href="index.html" data-i18n="nav.home">الرئيسية</a>
+              <a href="about.html" data-i18n="nav.about">من نحن</a>
+              <a href="contact.html" data-i18n="nav.contact">تواصل معنا</a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 data-i18n="footer.services_heading">خدماتنا الرئيسية</h4>
+            <div class="footer-links">
+              <a href="services.html" data-i18n="services.s1_title"
+                >التسويق عبر منصات التواصل</a
+              >
+              <a href="services.html" data-i18n="services.s2_title"
+                >تصميم الهوية التجارية</a
+              >
+              <a href="services.html" data-i18n="services.s3_title"
+                >صناعة المحتوى والإعلانات</a
+              >
+              <a href="services.html" data-i18n="services.s4_title"
+                >الإعلانات المدفوعة (PPC)</a
+              >
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 data-i18n="footer.contact_heading">معلومات التواصل</h4>
+            <div class="footer-links">
+              <p>
+                <i
+                  class="fas fa-map-marker-alt"
+                  style="color: var(--primary-color); margin-left: 8px"
+                ></i>
+                القاهرة & دبي
+              </p>
+              <p>
+                <i
+                  class="fas fa-phone"
+                  style="color: var(--primary-color); margin-left: 8px"
+                ></i>
+                +20 100 123 4567
+              </p>
+              <p>
+                <i
+                  class="fas fa-envelope"
+                  style="color: var(--primary-color); margin-left: 8px"
+                ></i>
+                contact@aurora.agency
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2026 Aurora Marketing Agency.
+            <span data-i18n="footer.rights">جميع الحقوق محفوظة.</span>
+          </p>
+          <div>
+            <a href="#" style="margin-left: 1rem; color: var(--text-muted)"
+              >سياسة الخصوصية</a
+            >
+            <a href="#" style="color: var(--text-muted)">الشروط والأحكام</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <button class="scroll-top-btn" aria-label="Scroll to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="js/theme.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/animation.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
