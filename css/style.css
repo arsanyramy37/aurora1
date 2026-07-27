@@ -261,14 +261,15 @@ button {
 .logo-icon {
   width: 40px;
   height: 40px;
-  background: var(--gradient-primary);
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
-  font-size: 1.25rem;
-  box-shadow: 0 4px 12px rgba(26, 180, 170, 0.4);
+  font-size: 1.2rem;
+}
+
+.logo-icon img {
+  border-radius: var(--radius-sm);
 }
 
 .logo span {
