@@ -272,10 +272,6 @@ button {
   border-radius: var(--radius-sm);
 }
 
-.logo span {
-  color: var(--primary-color);
-}
-
 .nav-menu {
   display: flex;
   align-items: center;
