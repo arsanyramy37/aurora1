@@ -195,10 +195,6 @@
   }
 
   /* Scroll Pinning Animations for Mobile */
-  .hero-visual {
-    animation: smoothScroll 15s ease-in-out infinite;
-  }
-
   .service-card {
     animation: slideInSmooth 0.8s ease-out forwards;
   }

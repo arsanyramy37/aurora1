@@ -152,17 +152,26 @@
 }
 
 /* Scroll Panning Motion */
-@keyframes scrollPan {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  100% {
-    transform: translate(-3%, 3%) scale(1.02);
-  }
+.scroll-pan {
+  /* تشغيل الأنيميشن */
+  animation: cinematicPan 8s ease-in-out infinite alternate;
 }
 
-.scroll-pan {
-  animation: scrollPan 20s linear infinite;
+@keyframes cinematicPan {
+  0% {
+    transform: scale(1) translate(0, 0) rotate(0deg);
+    filter: brightness(1);
+  }
+  50% {
+    /* حركة خفيفة للعمق مع تغيير إضاءة بسيط جداً */
+    transform: scale(1.03) translate(-1.5%, 1%) rotate(-0.5deg);
+    filter: brightness(1.03);
+  }
+  100% {
+    /* الحركة للاتجاه المعاكس لإعطاء إحساس الهيدروديناميكية */
+    transform: scale(1.05) translate(1.5%, -1%) rotate(0.5deg);
+    filter: brightness(0.98);
+  }
 }
 
 /* Loading Ripple Animation */
