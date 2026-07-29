@@ -162,6 +162,7 @@
     // Set document direction & lang attributes
     document.documentElement.setAttribute('lang', lang);
     document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+    document.dispatchEvent(new CustomEvent('aurora:languagechange', { detail: { lang } }));
 
     // Update text contents with fade effect to prevent overlapping
     const elements = document.querySelectorAll('[data-i18n]');

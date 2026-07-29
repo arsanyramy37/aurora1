@@ -194,12 +194,64 @@
     left: 1.25rem;
   }
 
-  /* Scroll Pinning Animations for Mobile */
-  .service-card {
-    animation: slideInSmooth 0.8s ease-out forwards;
+  .about-values-grid,
+  .about-story-grid,
+  .home-about-grid,
+  .contact-form-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
   }
 
-  .portfolio-card {
-    animation: fadeInSmooth 0.8s ease-out forwards;
+  .about-team-grid,
+  .services-process-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 1rem !important;
+  }
+
+  .contact-info-card,
+  .contact-form-wrapper {
+    padding: 1.5rem 1rem;
+  }
+
+  .info-item {
+    gap: 0.85rem;
+    margin-bottom: 1.35rem;
+  }
+
+  .info-content p,
+  .info-content a,
+  .form-control {
+    font-size: 0.9rem;
+    overflow-wrap: anywhere;
+  }
+
+  .faq-header {
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.1rem;
+    font-size: 1rem;
+  }
+
+  .faq-body {
+    padding-inline: 1.1rem;
+  }
+
+  .map-mockup {
+    height: 240px;
+  }
+}
+
+@media (max-width: 420px) {
+  .about-team-grid,
+  .services-process-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .service-card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

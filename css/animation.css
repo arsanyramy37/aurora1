@@ -50,30 +50,6 @@
   }
 }
 
-/* Floating Elements */
-@keyframes floatAnim {
-  0%,
-  100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-14px) rotate(2deg);
-  }
-}
-
-/* Glowing Background Aura Pulse */
-@keyframes glowPulse {
-  0%,
-  100% {
-    opacity: 0.4;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.75;
-    transform: scale(1.08);
-  }
-}
-
 /* Infinite Logo Marquee */
 @keyframes marqueeScroll {
   0% {
@@ -115,40 +91,96 @@
   animation: scaleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.float-element {
-  animation: floatAnim 5s ease-in-out infinite;
+/* Premium motion layer ---------------------------------------------------- */
+.hero {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(26, 180, 170, 0.22), transparent 32%),
+    radial-gradient(circle at 85% 70%, rgba(13, 148, 136, 0.16), transparent 30%),
+    var(--gradient-hero);
+  background-size: 180% 180%;
+  animation: auroraGradient 12s ease-in-out infinite alternate;
 }
 
-.glow-bg {
-  animation: glowPulse 6s ease-in-out infinite;
+@keyframes auroraGradient {
+  from { background-position: 0% 35%, 100% 70%, 50% 50%; }
+  to { background-position: 90% 65%, 10% 30%, 50% 50%; }
 }
 
-/* Scroll Reveal Observer Base State */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition:
-    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+.split-char {
+  display: inline-block;
+  will-change: transform, opacity;
 }
 
-.reveal.revealed {
-  opacity: 1;
-  transform: translateY(0);
+.cta-banner::before,
+.cta-banner::after {
+  content: '';
+  position: absolute;
+  width: 22rem;
+  height: 22rem;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(12px);
+  opacity: 0.38;
 }
 
-.reveal-delay-1 {
-  transition-delay: 0.15s;
+.cta-banner::before {
+  top: -13rem;
+  left: -6rem;
+  background: rgba(255, 255, 255, 0.5);
+  animation: ctaGlow 7s ease-in-out infinite alternate;
 }
-.reveal-delay-2 {
-  transition-delay: 0.3s;
+
+.cta-banner::after {
+  right: -8rem;
+  bottom: -15rem;
+  background: rgba(8, 71, 68, 0.5);
+  animation: ctaGlow 9s ease-in-out infinite alternate-reverse;
 }
-.reveal-delay-3 {
-  transition-delay: 0.45s;
+
+.cta-banner > * {
+  position: relative;
+  z-index: 1;
 }
-.reveal-delay-4 {
-  transition-delay: 0.6s;
+
+@keyframes ctaGlow {
+  from { transform: translate3d(-1rem, 0, 0) scale(0.85); }
+  to { transform: translate3d(2rem, 1rem, 0) scale(1.15); }
+}
+
+@media (pointer: fine) {
+  body.has-premium-cursor,
+  body.has-premium-cursor a,
+  body.has-premium-cursor button { cursor: none; }
+
+  .premium-cursor,
+  .premium-cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3000;
+    pointer-events: none;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .premium-cursor {
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(26, 180, 170, 0.9);
+    transition: width 0.25s ease, height 0.25s ease, background 0.25s ease;
+  }
+
+  .premium-cursor-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--primary-color);
+  }
+
+  .premium-cursor.is-active {
+    width: 54px;
+    height: 54px;
+    background: rgba(26, 180, 170, 0.16);
+  }
 }
 
 /* Scroll Panning Motion */
@@ -242,47 +274,6 @@
   background-color: var(--bg-main);
 }
 
-/* Smooth Scroll Animation */
-@keyframes smoothScroll {
-  0% {
-    transform: translateY(0) scale(1);
-  }
-  50% {
-    transform: translateY(-8px) scale(1.01);
-  }
-  100% {
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* Slide In Smooth */
-@keyframes slideInSmooth {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Fade In Smooth */
-@keyframes fadeInSmooth {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.smooth-scroll {
-  animation: smoothScroll 20s ease-in-out infinite;
-}
-
 /* Reduced Motion Override */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -293,8 +284,9 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .reveal {
-    opacity: 1 !important;
-    transform: none !important;
+  .hero,
+  .cta-banner::before,
+  .cta-banner::after {
+    animation: none !important;
   }
 }

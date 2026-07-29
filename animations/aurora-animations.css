@@ -1,0 +1,183 @@
+/* Aurora Animation Kit -----------------------------------------------------
+   Portable selectors live in aurora-animations.js. Copy this folder to a new
+   project, then edit the SELECTORS object there to match its class names. */
+
+:root {
+  --ak-progress: 0;
+}
+
+.ak-progress {
+  position: fixed;
+  inset: 0 auto auto 0;
+  width: calc(var(--ak-progress) * 100%);
+  height: 3px;
+  z-index: 3001;
+  background: linear-gradient(90deg, #1ab4aa, #78f3df, #0d9488);
+  box-shadow: 0 0 14px rgba(26, 180, 170, 0.85);
+  transform-origin: left center;
+}
+
+[dir='rtl'] .ak-progress {
+  inset-inline: auto 0;
+  transform-origin: right center;
+}
+
+.ak-hero-ready .hero-content,
+.ak-hero-ready .hero-visual {
+  animation: akHeroEnter 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.ak-hero-ready .hero-visual {
+  animation-delay: 0.12s;
+}
+
+@keyframes akHeroEnter {
+  from {
+    opacity: 0;
+    transform: translate3d(var(--ak-enter-x, 0), 32px, 0) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.ak-reveal {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--ak-delay, 0ms);
+}
+
+.ak-observer-ready .ak-reveal {
+  opacity: 0;
+  transform: translate3d(var(--ak-reveal-x, 0), 28px, 0) scale(0.975);
+}
+.ak-observer-ready .ak-reveal.ak-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+.ak-observer-ready .ak-reveal.ak-exit-up {
+  opacity: 0.15;
+  transform: translate3d(0, -24px, 0) scale(0.98);
+}
+
+.ak-text .ak-word {
+  display: inline-block;
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.48s ease,
+    transform 0.48s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--ak-word-index) * 28ms);
+}
+
+.ak-observer-ready .ak-text:not(.ak-visible) .ak-word {
+  opacity: 0;
+  transform: translateY(0.72em);
+}
+.ak-observer-ready .ak-text.ak-exit-up .ak-word {
+  opacity: 0;
+  transform: translateY(-0.5em);
+}
+
+.ak-parallax {
+  transform: translate3d(0, var(--ak-parallax-y, 0px), 0)
+    scale(var(--ak-parallax-scale, 1));
+  will-change: transform;
+}
+
+.ak-navbar-ready {
+  animation: akNavDrop 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes akNavDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ak-cta {
+  isolation: isolate;
+}
+.ak-cta::before {
+  content: '';
+  position: absolute;
+  inset: -45%;
+  z-index: -1;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.42),
+    transparent 48%
+  );
+  animation: akGlow 6s ease-in-out infinite alternate;
+}
+@keyframes akGlow {
+  from {
+    transform: translate(-18%, -12%) scale(0.75);
+  }
+  to {
+    transform: translate(18%, 12%) scale(1.12);
+  }
+}
+
+.ak-magnetic {
+  will-change: transform;
+  transition: transform 0.22s ease;
+}
+.ak-footer {
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ak-observer-ready .ak-footer {
+  opacity: 0;
+  transform: translateY(36px);
+}
+.ak-observer-ready .ak-footer.ak-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.ak-observer-ready .ak-footer.ak-exit-up {
+  opacity: 0.2;
+  transform: translateY(-24px);
+}
+
+@media (max-width: 767px) {
+  .ak-observer-ready .ak-reveal {
+    transform: translate3d(var(--ak-reveal-x, 0), 20px, 0) scale(0.985);
+  }
+  .ak-hero-ready .hero-content,
+  .ak-hero-ready .hero-visual {
+    animation-duration: 0.68s;
+  }
+  .ak-progress {
+    height: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ak-progress,
+  .ak-reveal,
+  .ak-text .ak-word,
+  .ak-footer {
+    transition: none !important;
+  }
+  .ak-hero-ready .hero-content,
+  .ak-hero-ready .hero-visual,
+  .ak-cta::before {
+    animation: none !important;
+  }
+  .ak-observer-ready .ak-reveal,
+  .ak-observer-ready .ak-text .ak-word,
+  .ak-observer-ready .ak-footer {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
