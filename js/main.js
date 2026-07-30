@@ -131,11 +131,4 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-
-  // Hide loader when page is fully loaded
-  window.addEventListener('load', () => {
-    if (pageLoader) {
-      pageLoader.classList.remove('active');
-    }
-  });
 });

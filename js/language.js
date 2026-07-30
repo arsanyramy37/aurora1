@@ -1,12 +1,14 @@
 /* ==========================================================================
    Aurora Marketing Agency - i18n & RTL/LTR Language Switcher
+   (معدل: يستنى التحميل ويمنع ظهور اللغة الغلط)
    ========================================================================== */
 
 (function () {
   const LANG_KEY = 'aurora_lang';
   let translations = {};
+  let isInitialLoad = true;
 
-  // Inline Fallback Dictionary for File Protocol / Instant Render
+  // Inline Fallback Dictionary
   const fallbackDictionary = {
     en: {
       'nav.home': 'Home',
@@ -109,30 +111,22 @@
 
   function getSavedLang() {
     const saved = localStorage.getItem(LANG_KEY);
-    if (saved === 'ar' || saved === 'en') {
-      return saved;
-    }
-    // Default to English
-    return 'en';
+    return saved === 'ar' || saved === 'en' ? saved : 'en';
   }
 
   async function loadTranslations(lang) {
     try {
       const response = await fetch(`./locales/${lang}.json`);
       if (response.ok) {
-        const data = await response.json();
-        translations[lang] = data || fallbackDictionary[lang];
+        translations[lang] = await response.json();
       } else {
-        console.warn(`Failed to load ${lang}.json, using fallback`);
         translations[lang] = fallbackDictionary[lang];
       }
     } catch (e) {
-      console.warn(`Error loading ${lang}.json:`, e);
       translations[lang] = fallbackDictionary[lang];
     }
   }
 
-  // Nested key lookup helper: e.g. "hero.title_1"
   function getNestedValue(obj, keyPath) {
     if (!obj) return null;
     if (obj[keyPath]) return obj[keyPath];
@@ -145,69 +139,69 @@
   }
 
   async function setLanguage(lang) {
-    // Ensure valid language
-    if (lang !== 'ar' && lang !== 'en') {
-      lang = 'en';
-    }
-
-    // Save to localStorage FIRST to persist across page loads
+    if (lang !== 'ar' && lang !== 'en') lang = 'en';
     localStorage.setItem(LANG_KEY, lang);
 
-    if (!translations[lang]) {
-      await loadTranslations(lang);
-    }
-
+    if (!translations[lang]) await loadTranslations(lang);
     const dict = translations[lang] || fallbackDictionary[lang];
 
-    // Set document direction & lang attributes
     document.documentElement.setAttribute('lang', lang);
     document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-    document.dispatchEvent(new CustomEvent('aurora:languagechange', { detail: { lang } }));
+    document.dispatchEvent(
+      new CustomEvent('aurora:languagechange', { detail: { lang } }),
+    );
 
-    // Update text contents with fade effect to prevent overlapping
+    // Add transition style once
+    if (!document.getElementById('ak-i18n-style')) {
+      const style = document.createElement('style');
+      style.id = 'ak-i18n-style';
+      style.textContent =
+        '[data-i18n] { transition: opacity 0.2s ease-in-out; }';
+      document.head.appendChild(style);
+    }
+
+    // Update text
     const elements = document.querySelectorAll('[data-i18n]');
     elements.forEach((el, index) => {
       const key = el.getAttribute('data-i18n');
       const val = getNestedValue(dict, key);
       if (val) {
-        el.style.opacity = '0';
-        setTimeout(() => {
+        // On initial load: instant swap (no fade) because body is hidden
+        // On manual switch: use fade
+        if (isInitialLoad) {
           el.textContent = val;
-          el.style.opacity = '1';
-        }, index * 5);
+        } else {
+          el.style.opacity = '0';
+          setTimeout(() => {
+            el.textContent = val;
+            el.style.opacity = '1';
+          }, index * 5);
+        }
       }
     });
 
-    // Update text with transition effect
-    const style = document.createElement('style');
-    style.textContent = '[data-i18n] { transition: opacity 0.2s ease-in-out; }';
-    document.head.appendChild(style);
-
-    // Update input placeholders
-    const placeholders = document.querySelectorAll('[data-i18n-placeholder]');
-    placeholders.forEach((el) => {
+    // Update placeholders
+    document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
       const key = el.getAttribute('data-i18n-placeholder');
       const val = getNestedValue(dict, key);
-      if (val) {
-        el.setAttribute('placeholder', val);
-      }
+      if (val) el.setAttribute('placeholder', val);
     });
 
-    // Update active button state
+    // Update active button
     document.querySelectorAll('.lang-btn').forEach((btn) => {
-      if (btn.getAttribute('data-lang') === lang) {
-        btn.classList.add('active');
-      } else {
-        btn.classList.remove('active');
-      }
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
     });
   }
 
   document.addEventListener('DOMContentLoaded', () => {
     const currentLang = getSavedLang();
-    setLanguage(currentLang);
 
-    // Language button listeners
+    // Apply language then signal ready
+    setLanguage(currentLang).then(() => {
+      isInitialLoad = false;
+      document.dispatchEvent(new CustomEvent('aurora:langready'));
+    });
+
     document.querySelectorAll('.lang-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
         const selectedLang = btn.getAttribute('data-lang');
@@ -217,11 +211,11 @@
       });
     });
 
-    // Ensure language persists on page navigation
     window.addEventListener('beforeunload', () => {
-      const currentLang =
-        document.documentElement.getAttribute('lang') || getSavedLang();
-      localStorage.setItem(LANG_KEY, currentLang);
+      localStorage.setItem(
+        LANG_KEY,
+        document.documentElement.getAttribute('lang') || getSavedLang(),
+      );
     });
   });
 

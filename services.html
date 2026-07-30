@@ -1,6 +1,17 @@
 <!doctype html>
 <html lang="ar" dir="rtl" data-theme="light">
   <head>
+    <!-- CRITICAL: منع ظهور اللغة الغلط قبل التحميل -->
+    <script>
+      (function () {
+        var lang = localStorage.getItem('aurora_lang') || 'en';
+        var html = document.documentElement;
+        html.setAttribute('lang', lang);
+        html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+        html.style.colorScheme = html.getAttribute('data-theme') || 'light';
+        html.classList.add('aurora-loading');
+      })();
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>خدماتنا | Aurora Marketing Agency</title>
@@ -37,7 +48,7 @@
   </head>
   <body>
     <!-- Page Loader with Ripple Effect -->
-    <div class="page-loader">
+    <div class="page-loader active">
       <div class="loading-ripple"></div>
     </div>
 
@@ -758,5 +769,63 @@
     <script src="js/navbar.js"></script>
     <script src="animations/aurora-animations.js"></script>
     <script src="js/main.js"></script>
+    <!-- Loader Coordination: يشيل اللودر لما اللغة والأنيميشن يخلصوا -->
+    <script>
+      (function () {
+        var langReady = false,
+          animReady = false,
+          loadReady = false,
+          startTime = Date.now(),
+          minTime = 1050; // ← أقل وقت عشان الـ ripple يكمل دورة
+
+        function hideLoader() {
+          var elapsed = Date.now() - startTime;
+          var wait = Math.max(0, minTime - elapsed);
+
+          setTimeout(function () {
+            var loader = document.querySelector('.page-loader');
+            if (loader) {
+              loader.classList.remove('active');
+              // اشيله من DOM بعد ما يختفى
+              setTimeout(function () {
+                if (loader.parentNode) loader.parentNode.removeChild(loader);
+              }, 800);
+            }
+          }, wait);
+        }
+
+        function check() {
+          // ← لو عايز تستنى الصور خليها 3 شروط، لو مش عايز استخدم الشرطين بس
+          if (langReady && animReady /* && loadReady */) {
+            hideLoader();
+          }
+        }
+
+        document.addEventListener('aurora:langready', function () {
+          langReady = true;
+          check();
+        });
+
+        document.addEventListener('aurora:animready', function () {
+          animReady = true;
+          check();
+        });
+
+        // ← شيل التعليق ده لو عايز تستنى الصور تحمل
+        /*
+  window.addEventListener('load', function () {
+    loadReady = true;
+    check();
+  });
+  */
+
+        // Fallback
+        setTimeout(function () {
+          if (!langReady || !animReady) {
+            hideLoader();
+          }
+        }, 3500);
+      })();
+    </script>
   </body>
 </html>

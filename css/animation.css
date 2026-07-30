@@ -94,16 +94,34 @@
 /* Premium motion layer ---------------------------------------------------- */
 .hero {
   background:
-    radial-gradient(circle at 15% 20%, rgba(26, 180, 170, 0.22), transparent 32%),
-    radial-gradient(circle at 85% 70%, rgba(13, 148, 136, 0.16), transparent 30%),
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(26, 180, 170, 0.22),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 85% 70%,
+      rgba(13, 148, 136, 0.16),
+      transparent 30%
+    ),
     var(--gradient-hero);
   background-size: 180% 180%;
   animation: auroraGradient 12s ease-in-out infinite alternate;
 }
 
 @keyframes auroraGradient {
-  from { background-position: 0% 35%, 100% 70%, 50% 50%; }
-  to { background-position: 90% 65%, 10% 30%, 50% 50%; }
+  from {
+    background-position:
+      0% 35%,
+      100% 70%,
+      50% 50%;
+  }
+  to {
+    background-position:
+      90% 65%,
+      10% 30%,
+      50% 50%;
+  }
 }
 
 .split-char {
@@ -143,14 +161,20 @@
 }
 
 @keyframes ctaGlow {
-  from { transform: translate3d(-1rem, 0, 0) scale(0.85); }
-  to { transform: translate3d(2rem, 1rem, 0) scale(1.15); }
+  from {
+    transform: translate3d(-1rem, 0, 0) scale(0.85);
+  }
+  to {
+    transform: translate3d(2rem, 1rem, 0) scale(1.15);
+  }
 }
 
 @media (pointer: fine) {
   body.has-premium-cursor,
   body.has-premium-cursor a,
-  body.has-premium-cursor button { cursor: none; }
+  body.has-premium-cursor button {
+    cursor: none;
+  }
 
   .premium-cursor,
   .premium-cursor-dot {
@@ -167,7 +191,10 @@
     width: 34px;
     height: 34px;
     border: 1px solid rgba(26, 180, 170, 0.9);
-    transition: width 0.25s ease, height 0.25s ease, background 0.25s ease;
+    transition:
+      width 0.25s ease,
+      height 0.25s ease,
+      background 0.25s ease;
   }
 
   .premium-cursor-dot {
@@ -261,7 +288,7 @@
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.8s ease-in-out;
   pointer-events: none;
 }
 
