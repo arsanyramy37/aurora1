@@ -288,13 +288,19 @@
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: opacity 0.8s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
   pointer-events: none;
 }
 
 .page-loader.active {
   opacity: 1;
   pointer-events: auto;
+}
+/* ← NEW: لما اللودر يبدأ يختفى، وقف الـ Ripple فوراً */
+.page-loader:not(.active) .loading-ripple {
+  animation: none;
+  opacity: 0;
+  transition: opacity 0.1s ease;
 }
 
 [data-theme='dark'] .page-loader {
