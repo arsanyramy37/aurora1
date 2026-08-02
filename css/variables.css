@@ -41,6 +41,7 @@
   /* Typography */
   --font-en: 'Space Grotesk', system-ui, -apple-system, sans-serif;
   --font-ar: 'Readex Pro', system-ui, -apple-system, sans-serif;
+  --font-logo: 'Caveat', cursive;
   --font-current: var(--font-en);
 
   /* Layout & Spacing */
