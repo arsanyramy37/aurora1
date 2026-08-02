@@ -30,13 +30,21 @@ document.addEventListener('DOMContentLoaded', () => {
   function openMobileNav() {
     mobileDrawer?.classList.add('open');
     drawerOverlay?.classList.add('open');
-    document.body.style.overflow = 'hidden';
+    // Defer overflow change to next frame for smoother animation
+    requestAnimationFrame(() => {
+      document.body.style.overflow = 'hidden';
+    });
   }
 
   function closeMobileNav() {
     mobileDrawer?.classList.remove('open');
     drawerOverlay?.classList.remove('open');
-    document.body.style.overflow = '';
+    // Restore body scroll after the drawer transition finishes to avoid layout jank
+    const onTransitionEnd = () => {
+      document.body.style.overflow = '';
+      mobileDrawer?.removeEventListener('transitionend', onTransitionEnd);
+    };
+    mobileDrawer?.addEventListener('transitionend', onTransitionEnd);
   }
 
   mobileToggle?.addEventListener('click', openMobileNav);
@@ -44,13 +52,13 @@ document.addEventListener('DOMContentLoaded', () => {
   drawerClose?.addEventListener('click', closeMobileNav);
 
   // Close drawer on link click
-  document.querySelectorAll('.mobile-drawer .nav-link').forEach(link => {
+  document.querySelectorAll('.mobile-drawer .nav-link').forEach((link) => {
     link.addEventListener('click', closeMobileNav);
   });
 
   // Active Link Highlighting based on Page URL
   const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-link').forEach(link => {
+  document.querySelectorAll('.nav-link').forEach((link) => {
     const href = link.getAttribute('href');
     if (href === currentPath || (currentPath === '' && href === 'index.html')) {
       link.classList.add('active');
@@ -63,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
   scrollTopBtn?.addEventListener('click', () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
   });
 });
