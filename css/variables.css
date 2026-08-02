@@ -112,6 +112,14 @@
   font-family: 'Font Awesome 6 Free', sans-serif !important;
 }
 
+[dir='rtl'] .fab,
+[dir='rtl'] .fa-brands,
+[dir='rtl'] [class*='fab'],
+[dir='rtl'] [class*='fa-brands'] {
+  font-weight: 400 !important;
+  font-family: 'Font Awesome 6 Brands' !important;
+}
+
 [dir='rtl'] .section-title,
 [dir='rtl'] h1,
 [dir='rtl'] h2,

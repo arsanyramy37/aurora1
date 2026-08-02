@@ -365,7 +365,7 @@ button {
   justify-content: space-between;
   transform: translateX(100%);
   opacity: 0;
-  visibility: hidden;
+  pointer-events: none;
   transition:
     transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
     opacity 220ms ease;
@@ -384,7 +384,7 @@ button {
 .mobile-drawer.open {
   transform: translateX(0);
   opacity: 1;
-  visibility: visible;
+  pointer-events: auto;
 }
 
 .mobile-drawer .btn {

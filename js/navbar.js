@@ -37,14 +37,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function closeMobileNav() {
-    mobileDrawer?.classList.remove('open');
-    drawerOverlay?.classList.remove('open');
-    // Restore body scroll after the drawer transition finishes to avoid layout jank
-    const onTransitionEnd = () => {
+    if (!mobileDrawer || !drawerOverlay) return;
+
+    mobileDrawer.classList.remove('open');
+    drawerOverlay.classList.remove('open');
+
+    const onTransitionEnd = (event) => {
+      if (event.target !== mobileDrawer || event.propertyName !== 'transform')
+        return;
       document.body.style.overflow = '';
-      mobileDrawer?.removeEventListener('transitionend', onTransitionEnd);
+      mobileDrawer.removeEventListener('transitionend', onTransitionEnd);
     };
-    mobileDrawer?.addEventListener('transitionend', onTransitionEnd);
+
+    mobileDrawer.addEventListener('transitionend', onTransitionEnd);
   }
 
   mobileToggle?.addEventListener('click', openMobileNav);
