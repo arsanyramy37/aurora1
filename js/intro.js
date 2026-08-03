@@ -31,7 +31,7 @@
   }
 
   function showOverlayOnce() {
-    if (localStorage.getItem(STORAGE_KEY)) return null;
+    if (sessionStorage.getItem(STORAGE_KEY)) return null;
     return createOverlay();
   }
 
@@ -385,7 +385,7 @@
   startBtn.addEventListener('click', function () {
     // set flag
     try {
-      localStorage.setItem(STORAGE_KEY, '1');
+      sessionStorage.setItem(STORAGE_KEY, '1');
     } catch (e) {}
     // fade out
     overlay.classList.add('hidden');
