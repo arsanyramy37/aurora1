@@ -20,6 +20,9 @@
     content.innerHTML = `
       <h1 class="intro-brand" dir="ltr">Aurora</h1>
       <p class="intro-quote">"Strategy Meets Storytelling"</p>
+      <div class="intro-logo-wrapper">
+        <img src="assets/img/overlayLogo.png" alt="Aurora logo" class="intro-logo" aria-hidden="true" />
+      </div>
       <button id="intro-start" class="intro-start-btn">Start</button>
       <div class="intro-hint">Tap Start to enter</div>
     `;
@@ -27,6 +30,7 @@
 
     document.body.appendChild(overlay);
     document.body.classList.add('intro-active');
+    document.documentElement.classList.add('intro-active');
     return overlay;
   }
 
@@ -40,6 +44,7 @@
 
   const contentEl = overlay.querySelector('.intro-content');
   const startBtn = overlay.querySelector('#intro-start');
+  const logoWrapper = overlay.querySelector('.intro-logo-wrapper');
   let exclusionZone = null;
   const canvasOffset = { x: 0, y: 0 };
 
@@ -72,8 +77,14 @@
 
   function updateExclusionZone() {
     if (!contentEl) return;
+
+    if (width <= 520) {
+      exclusionZone = null;
+      return;
+    }
+
     const rect = contentEl.getBoundingClientRect();
-    const padding = Math.max(48, width * 0.08);
+    const padding = Math.max(8, Math.min(14, width * 0.02));
     exclusionZone = {
       left: Math.max(0, rect.left - padding),
       top: Math.max(0, rect.top - padding),
@@ -90,9 +101,13 @@
     particles = [];
     const area = width * height;
     const count = Math.min(220, Math.max(180, Math.floor(area / 1600)));
+    const centerExtra = Math.round(count * 0.22);
+    const outerCount = count - centerExtra;
     const zone = exclusionZone;
+    const centerPaddingX = width * 0.2;
+    const centerPaddingY = height * 0.2;
 
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < outerCount; i++) {
       let x,
         y,
         attempts = 0;
@@ -110,6 +125,38 @@
       );
 
       const size = rand(8, 20);
+      particles.push({
+        x,
+        y,
+        ox: x,
+        oy: y,
+        vx: 0,
+        vy: 0,
+        size,
+        r: size / 2 + rand(-2, 2),
+        scale: 1,
+        wob: rand(0.5, 1.5),
+      });
+    }
+
+    for (let i = 0; i < centerExtra; i++) {
+      let x,
+        y,
+        attempts = 0;
+      do {
+        x = width / 2 + rand(-centerPaddingX, centerPaddingX);
+        y = height / 2 + rand(-centerPaddingY, centerPaddingY);
+        attempts += 1;
+      } while (
+        zone &&
+        x > zone.left &&
+        x < zone.right &&
+        y > zone.top &&
+        y < zone.bottom &&
+        attempts < 80
+      );
+
+      const size = rand(8, 18);
       particles.push({
         x,
         y,
@@ -387,17 +434,92 @@
     try {
       sessionStorage.setItem(STORAGE_KEY, '1');
     } catch (e) {}
-    // fade out
-    overlay.classList.add('hidden');
-    document.body.classList.remove('intro-active');
-    // cleanup
-    setTimeout(() => {
-      cancelAnimationFrame(rafId);
-      window.removeEventListener('resize', resize);
-      window.removeEventListener('mousemove', onMove);
-      window.removeEventListener('touchmove', onMove);
-      if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
-    }, 520);
+
+    const logoEl = overlay.querySelector('.intro-logo');
+    const animationDuration = 0.8;
+    const logoRect = logoEl.getBoundingClientRect();
+    const maxDim = Math.max(width, height);
+    const logoSize = Math.max(logoRect.width, logoRect.height);
+    const scaleTarget = Math.max(12, (maxDim / logoSize) * 1.1);
+
+    if (typeof gsap !== 'undefined') {
+      overlay.classList.add('darkened');
+      overlay.style.backgroundColor = '#000';
+      overlay.style.backgroundImage = 'none';
+
+      const exitLogo = document.createElement('div');
+      exitLogo.className = 'intro-exit-logo-wrapper';
+      const exitImage = document.createElement('img');
+      exitImage.src = 'assets/img/overlayLogo.png';
+      exitImage.alt = '';
+      exitLogo.appendChild(exitImage);
+      overlay.appendChild(exitLogo);
+
+      const exitRect = exitLogo.getBoundingClientRect();
+      const exitSize = Math.max(exitRect.width, exitRect.height);
+      const screenDiag = Math.sqrt(width * width + height * height);
+      const targetScale = Math.max(18, (screenDiag / exitSize) * 1.05);
+
+      gsap.set(exitLogo, { transformOrigin: 'center center' });
+      gsap
+        .timeline({
+          onComplete: () => {
+            document.body.classList.remove('intro-active');
+            document.documentElement.classList.remove('intro-active');
+            cancelAnimationFrame(rafId);
+            window.removeEventListener('resize', resize);
+            window.removeEventListener('mousemove', onMove);
+            window.removeEventListener('touchmove', onMove);
+            if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+          },
+        })
+        .to(
+          startBtn,
+          {
+            autoAlpha: 0,
+            duration: 0.12,
+            ease: 'power2.out',
+          },
+          0,
+        )
+        .to(
+          contentEl,
+          {
+            autoAlpha: 0,
+            duration: 0.24,
+            ease: 'power2.out',
+          },
+          0,
+        )
+        .to(
+          exitLogo,
+          {
+            scale: targetScale,
+            duration: animationDuration,
+            ease: 'power2.inOut',
+          },
+          0,
+        )
+        .to(
+          overlay,
+          {
+            autoAlpha: 0,
+            duration: 0.18,
+            ease: 'power1.inOut',
+          },
+          animationDuration,
+        );
+    } else {
+      overlay.classList.add('hidden');
+      document.body.classList.remove('intro-active');
+      setTimeout(() => {
+        cancelAnimationFrame(rafId);
+        window.removeEventListener('resize', resize);
+        window.removeEventListener('mousemove', onMove);
+        window.removeEventListener('touchmove', onMove);
+        if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+      }, 520);
+    }
   });
 
   // allow click outside to close

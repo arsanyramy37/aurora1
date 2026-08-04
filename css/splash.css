@@ -9,10 +9,11 @@
   inset: 0;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(
-    180deg,
-    rgba(5, 10, 20, 0.95),
-    rgba(5, 8, 14, 0.95)
+  background: radial-gradient(
+    circle at 50% 20%,
+    rgba(8, 12, 24, 0.96) 0%,
+    rgba(0, 0, 0, 0.98) 52%,
+    rgba(0, 0, 0, 0.98) 100%
   );
   display: flex;
   align-items: center;
@@ -22,6 +23,12 @@
   transition:
     opacity 420ms ease,
     visibility 420ms ease;
+}
+
+.intro-overlay.darkened {
+  background: #000;
+  background-image: none;
+  transition: none !important;
 }
 
 .intro-overlay.hidden {
@@ -45,9 +52,56 @@
   align-items: center;
   text-align: center;
   color: #fff;
-  padding: 2rem;
-  max-width: 90ch;
-  gap: 1rem;
+  padding: 1.5rem 1.75rem;
+  max-width: min(75ch, 95vw);
+  gap: 0.88rem;
+  background: rgba(4, 6, 12, 0.52);
+  border-radius: 28px;
+  box-shadow: 0 30px 78px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.intro-logo-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.85rem;
+  transform-origin: center center;
+  will-change: transform, opacity;
+}
+
+.intro-exit-logo-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(5.5rem, 15vw);
+  height: auto;
+  transform: translate(-50%, -50%) scale(1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2025;
+  pointer-events: none;
+  opacity: 1;
+  will-change: transform, opacity;
+}
+
+.intro-exit-logo-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.intro-logo {
+  width: min(5.5rem, 15vw);
+  max-width: 5.5rem;
+  height: auto;
+  display: block;
+  transform-origin: center center;
+  filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.45))
+    drop-shadow(0 0 12px rgba(0, 0, 0, 0.25));
 }
 
 .intro-brand {
@@ -166,6 +220,11 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+html.intro-active,
+body.intro-active {
+  background: #000;
 }
 
 body.intro-active {
