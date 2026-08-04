@@ -76,7 +76,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: min(5.5rem, 15vw);
+  width: min(9rem, 20vw);
+  max-width: 220px;
   height: auto;
   transform: translate(-50%, -50%) scale(1);
   display: inline-flex;
@@ -92,6 +93,10 @@
   width: 100%;
   height: auto;
   display: block;
+  image-rendering: auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .intro-logo {

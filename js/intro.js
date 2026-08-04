@@ -363,14 +363,18 @@
     if (brandEl) {
       brandEl.style.opacity = '1';
       brandEl.style.transform = 'translateY(0)';
-      brandEl.textContent = '';
-      startTextLoop(brandEl, 'Aurora', {
-        initialDelay: 0.0,
-        typeSpeed: 0.08,
-        deleteSpeed: 0.04,
-        holdTime: 1.5,
-        pauseTime: 1.0,
-      });
+      if (window.innerWidth > 520) {
+        brandEl.textContent = '';
+        startTextLoop(brandEl, 'Aurora', {
+          initialDelay: 0.0,
+          typeSpeed: 0.08,
+          deleteSpeed: 0.04,
+          holdTime: 1.5,
+          pauseTime: 1.0,
+        });
+      } else {
+        brandEl.textContent = 'Aurora';
+      }
     }
 
     if (quoteEl) {
@@ -458,7 +462,10 @@
       const exitRect = exitLogo.getBoundingClientRect();
       const exitSize = Math.max(exitRect.width, exitRect.height);
       const screenDiag = Math.sqrt(width * width + height * height);
-      const targetScale = Math.max(18, (screenDiag / exitSize) * 1.05);
+      const targetScale = Math.min(
+        10,
+        Math.max(5, (screenDiag / exitSize) * 0.95),
+      );
 
       gsap.set(exitLogo, { transformOrigin: 'center center' });
       gsap
