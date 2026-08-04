@@ -255,60 +255,71 @@
   }
 
   let rafId = null;
-  const typeTasks = [];
+  let textLoopTimeout = null;
 
-  function scheduleType(fn, delay) {
-    if (typeof gsap === 'undefined') {
-      return null;
+  function clearTextLoop() {
+    if (textLoopTimeout) {
+      clearTimeout(textLoopTimeout);
+      textLoopTimeout = null;
     }
-    const task = gsap.delayedCall(delay, fn);
-    typeTasks.push(task);
-    return task;
   }
 
   function startTextLoop(el, text, options = {}) {
     const {
-      initialDelay = 0.4,
-      typeSpeed = 0.07,
-      deleteSpeed = 0.04,
-      holdTime = 1.3,
-      pauseTime = 1.0,
+      initialDelay = 400,
+      typeSpeed = 80,
+      deleteSpeed = 50,
+      holdTime = 1200,
+      pauseTime = 1000,
     } = options;
 
-    function runCycle() {
-      el.textContent = '';
-      scheduleType(() => {
+    clearTextLoop();
+    el.textContent = '';
+
+    let index = 0;
+    let phase = 'typing';
+
+    function step() {
+      if (phase === 'typing') {
+        index += 1;
+        el.textContent = text.slice(0, index);
+        if (index < text.length) {
+          textLoopTimeout = setTimeout(step, typeSpeed);
+          return;
+        }
+        phase = 'holding';
+        textLoopTimeout = setTimeout(step, holdTime);
+        return;
+      }
+
+      if (phase === 'holding') {
+        phase = 'deleting';
+        textLoopTimeout = setTimeout(step, deleteSpeed);
+        return;
+      }
+
+      if (phase === 'deleting') {
+        index -= 1;
+        el.textContent = text.slice(0, index);
+        if (index > 0) {
+          textLoopTimeout = setTimeout(step, deleteSpeed);
+          return;
+        }
+        phase = 'pause';
+        textLoopTimeout = setTimeout(step, pauseTime);
+        return;
+      }
+
+      if (phase === 'pause') {
+        phase = 'typing';
+        index = 0;
         el.textContent = '';
-      }, 0);
-
-      for (let i = 1; i <= text.length; i += 1) {
-        scheduleType(
-          () => {
-            el.textContent = text.slice(0, i);
-          },
-          initialDelay + i * typeSpeed,
-        );
+        textLoopTimeout = setTimeout(step, typeSpeed);
+        return;
       }
-
-      const typedAt = initialDelay + text.length * typeSpeed;
-      const deleteStart = typedAt + holdTime;
-
-      for (let i = 1; i <= text.length; i += 1) {
-        scheduleType(
-          () => {
-            el.textContent = text.slice(0, text.length - i);
-          },
-          deleteStart + i * deleteSpeed,
-        );
-      }
-
-      scheduleType(
-        runCycle,
-        deleteStart + text.length * deleteSpeed + pauseTime,
-      );
     }
 
-    runCycle();
+    textLoopTimeout = setTimeout(step, initialDelay);
   }
   function loop() {
     update();
@@ -363,21 +374,14 @@
     if (brandEl) {
       brandEl.style.opacity = '1';
       brandEl.style.transform = 'translateY(0)';
-      if (window.innerWidth > 520) {
-        brandEl.textContent = '';
-        startTextLoop(brandEl, 'Aurora', {
-          initialDelay: 0.0,
-          typeSpeed: 0.08,
-          deleteSpeed: 0.04,
-          holdTime: 1.5,
-          pauseTime: 1.0,
-        });
-      } else {
-        brandEl.textContent = 'Aurora';
-      }
-    }
-
-    if (quoteEl) {
+      brandEl.textContent = '';
+      startTextLoop(brandEl, 'Aurora', {
+        initialDelay: 80,
+        typeSpeed: 70,
+        deleteSpeed: 45,
+        holdTime: 1200,
+        pauseTime: 950,
+      });
       quoteEl.style.opacity = '1';
       quoteEl.style.transform = 'translateY(0)';
       quoteEl.textContent = '"Strategy Meets Storytelling"';
@@ -459,8 +463,9 @@
       exitLogo.appendChild(exitImage);
       exitLogo.style.position = 'fixed';
       exitLogo.style.pointerEvents = 'none';
-      exitLogo.style.width = `${logoRect.width}px`;
-      exitLogo.style.height = `${logoRect.height}px`;
+      const initialSize = Math.min(240, Math.max(logoRect.width * 1.9, 120));
+      exitLogo.style.width = `${initialSize}px`;
+      exitLogo.style.height = 'auto';
       exitLogo.style.top = `${logoRect.top + logoRect.height / 2}px`;
       exitLogo.style.left = `${logoRect.left + logoRect.width / 2}px`;
       exitLogo.style.transform = 'translate(-50%, -50%) scale(1)';
@@ -469,11 +474,11 @@
         logoWrapper.style.visibility = 'hidden';
       }
 
-      const exitSize = Math.max(logoRect.width, logoRect.height);
+      const exitSize = Math.max(initialSize, logoRect.height);
       const screenDiag = Math.sqrt(width * width + height * height);
       const targetScale = Math.min(
-        6.4,
-        Math.max(4.2, (screenDiag / exitSize) * 0.82),
+        5.1,
+        Math.max(3.6, (screenDiag / exitSize) * 0.86),
       );
 
       gsap.set(exitLogo, { transformOrigin: 'center center' });
