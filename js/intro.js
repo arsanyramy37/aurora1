@@ -447,7 +447,7 @@
     const scaleTarget = Math.max(12, (maxDim / logoSize) * 1.1);
 
     if (typeof gsap !== 'undefined') {
-      overlay.classList.add('darkened');
+      overlay.classList.add('darkened', 'exiting');
       overlay.style.backgroundColor = '#000';
       overlay.style.backgroundImage = 'none';
 
@@ -457,14 +457,23 @@
       exitImage.src = 'assets/img/overlayLogo.png';
       exitImage.alt = '';
       exitLogo.appendChild(exitImage);
+      exitLogo.style.position = 'fixed';
+      exitLogo.style.pointerEvents = 'none';
+      exitLogo.style.width = `${logoRect.width}px`;
+      exitLogo.style.height = `${logoRect.height}px`;
+      exitLogo.style.top = `${logoRect.top + logoRect.height / 2}px`;
+      exitLogo.style.left = `${logoRect.left + logoRect.width / 2}px`;
+      exitLogo.style.transform = 'translate(-50%, -50%) scale(1)';
       overlay.appendChild(exitLogo);
+      if (logoWrapper) {
+        logoWrapper.style.visibility = 'hidden';
+      }
 
-      const exitRect = exitLogo.getBoundingClientRect();
-      const exitSize = Math.max(exitRect.width, exitRect.height);
+      const exitSize = Math.max(logoRect.width, logoRect.height);
       const screenDiag = Math.sqrt(width * width + height * height);
       const targetScale = Math.min(
-        10,
-        Math.max(5, (screenDiag / exitSize) * 0.95),
+        6.4,
+        Math.max(4.2, (screenDiag / exitSize) * 0.82),
       );
 
       gsap.set(exitLogo, { transformOrigin: 'center center' });
@@ -493,7 +502,7 @@
           contentEl,
           {
             autoAlpha: 0,
-            duration: 0.24,
+            duration: 0.18,
             ease: 'power2.out',
           },
           0,
@@ -511,10 +520,10 @@
           overlay,
           {
             autoAlpha: 0,
-            duration: 0.18,
+            duration: 0.24,
             ease: 'power1.inOut',
           },
-          animationDuration,
+          animationDuration * 0.72,
         );
     } else {
       overlay.classList.add('hidden');
