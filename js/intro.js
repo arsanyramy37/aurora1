@@ -438,109 +438,77 @@
 
   // start button
   startBtn.addEventListener('click', function () {
-    // set flag
     try {
       sessionStorage.setItem(STORAGE_KEY, '1');
     } catch (e) {}
 
-    const logoEl = overlay.querySelector('.intro-logo');
-    const animationDuration = 0.8;
-    const logoRect = logoEl.getBoundingClientRect();
-    const maxDim = Math.max(width, height);
-    const logoSize = Math.max(logoRect.width, logoRect.height);
-    const scaleTarget = Math.max(12, (maxDim / logoSize) * 1.1);
-
-    if (typeof gsap !== 'undefined') {
-      overlay.classList.add('darkened', 'exiting');
-      overlay.style.backgroundColor = '#000';
-      overlay.style.backgroundImage = 'none';
-
-      const exitLogo = document.createElement('div');
-      exitLogo.className = 'intro-exit-logo-wrapper';
-      const exitImage = document.createElement('img');
-      exitImage.src = 'assets/img/overlayLogo.png';
-      exitImage.alt = '';
-      exitLogo.appendChild(exitImage);
-      exitLogo.style.position = 'fixed';
-      exitLogo.style.pointerEvents = 'none';
-      const initialSize = Math.min(240, Math.max(logoRect.width * 1.9, 120));
-      exitLogo.style.width = `${initialSize}px`;
-      exitLogo.style.height = 'auto';
-      exitLogo.style.top = `${logoRect.top + logoRect.height / 2}px`;
-      exitLogo.style.left = `${logoRect.left + logoRect.width / 2}px`;
-      exitLogo.style.transform = 'translate(-50%, -50%) scale(1)';
-      overlay.appendChild(exitLogo);
-      if (logoWrapper) {
-        logoWrapper.style.visibility = 'hidden';
-      }
-
-      const exitSize = Math.max(initialSize, logoRect.height);
-      const screenDiag = Math.sqrt(width * width + height * height);
-      const targetScale = Math.min(
-        5.1,
-        Math.max(3.6, (screenDiag / exitSize) * 0.86),
-      );
-
-      gsap.set(exitLogo, { transformOrigin: 'center center' });
-      gsap
-        .timeline({
-          onComplete: () => {
-            document.body.classList.remove('intro-active');
-            document.documentElement.classList.remove('intro-active');
-            cancelAnimationFrame(rafId);
-            window.removeEventListener('resize', resize);
-            window.removeEventListener('mousemove', onMove);
-            window.removeEventListener('touchmove', onMove);
-            if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
-          },
-        })
-        .to(
-          startBtn,
-          {
-            autoAlpha: 0,
-            duration: 0.12,
-            ease: 'power2.out',
-          },
-          0,
-        )
-        .to(
-          contentEl,
-          {
-            autoAlpha: 0,
-            duration: 0.18,
-            ease: 'power2.out',
-          },
-          0,
-        )
-        .to(
-          exitLogo,
-          {
-            scale: targetScale,
-            duration: animationDuration,
-            ease: 'power2.inOut',
-          },
-          0,
-        )
-        .to(
-          overlay,
-          {
-            autoAlpha: 0,
-            duration: 0.24,
-            ease: 'power1.inOut',
-          },
-          animationDuration * 0.72,
-        );
-    } else {
+    if (typeof gsap === 'undefined') {
       overlay.classList.add('hidden');
       document.body.classList.remove('intro-active');
+      document.documentElement.classList.remove('intro-active');
       setTimeout(() => {
+        if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+      }, 400);
+      return;
+    }
+
+    // 1. نظهر الصفحة الرئيسية فورًا من تحت الـ Overlay
+    document.body.classList.remove('intro-active');
+    document.documentElement.classList.remove('intro-active');
+
+    // 2. نخلي خلفية الـ Overlay شفافة عشان الصفحة تبين من تحت
+    gsap.set(overlay, {
+      backgroundColor: 'transparent',
+      backgroundImage: 'none',
+    });
+
+    // 3. نخفي المحتوى (النص + الزرار + اللوجو) بسرعة
+    gsap.to([startBtn, contentEl], {
+      autoAlpha: 0,
+      duration: 0.2,
+      ease: 'power2.out',
+    });
+
+    // 4. ندي للجزيئات قوة تفرق عالية
+    particles.forEach((p) => {
+      const angle = Math.random() * Math.PI * 2;
+      const force = 9 + Math.random() * 16;
+      p.vx = Math.cos(angle) * force;
+      p.vy = Math.sin(angle) * force;
+    });
+
+    // نوقف تفاعل الماوس
+    mouse.x = null;
+    mouse.y = null;
+
+    // 5. نخلي الجزيئات تطير ومش ترجع لمكانها
+    update = function () {
+      particles.forEach((p) => {
+        p.vx *= 0.965;
+        p.vy *= 0.965;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.r *= 0.982; // تصغير تدريجي
+      });
+    };
+
+    // 6. نعمل Fade Out للـ Overlay كله (الجزيئات هتفضل طايرة فوق الصفحة)
+    gsap.to(overlay, {
+      autoAlpha: 0,
+      duration: 1.6,
+      ease: 'power1.out',
+      delay: 0.15,
+      onComplete: () => {
         cancelAnimationFrame(rafId);
         window.removeEventListener('resize', resize);
         window.removeEventListener('mousemove', onMove);
         window.removeEventListener('touchmove', onMove);
-        if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
-      }, 520);
-    }
+
+        if (overlay.parentNode) {
+          overlay.parentNode.removeChild(overlay);
+        }
+      },
+    });
   });
 
   // allow click outside to close
