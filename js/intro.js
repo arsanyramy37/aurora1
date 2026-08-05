@@ -455,6 +455,10 @@
     // ===== نوقف أنيميشن الكتابة =====
     clearTextLoop();
 
+    // ===== نمنع أي لمس أو كليك على الـ Overlay فورًا =====
+    overlay.style.pointerEvents = 'none';
+    overlay.style.touchAction = 'none';
+
     // ===== مهم: نشيل مستمعي اللمس والماوس فورًا =====
     window.removeEventListener('mousemove', onMove);
     window.removeEventListener('touchmove', onMove);
