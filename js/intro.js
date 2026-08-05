@@ -452,20 +452,26 @@
       return;
     }
 
-    // ===== مهم: نوقف أنيميشن الكتابة فورًا =====
+    // ===== نوقف أنيميشن الكتابة =====
     clearTextLoop();
 
-    // ===== نظهر الصفحة الرئيسية من تحت =====
+    // ===== مهم: نشيل مستمعي اللمس والماوس فورًا =====
+    window.removeEventListener('mousemove', onMove);
+    window.removeEventListener('touchmove', onMove);
+    mouse.x = null;
+    mouse.y = null;
+
+    // ===== نظهر الصفحة الرئيسية =====
     document.body.classList.remove('intro-active');
     document.documentElement.classList.remove('intro-active');
 
-    // ===== نخلي خلفية الـ Overlay شفافة =====
+    // ===== خلفية شفافة =====
     gsap.set(overlay, {
       backgroundColor: 'transparent',
       backgroundImage: 'none',
     });
 
-    // ===== نخفي كل المحتوى فورًا (Aurora + الجملة + الزرار + اللوجو) =====
+    // ===== نخفي كل المحتوى فورًا =====
     gsap.to([startBtn, contentEl], {
       autoAlpha: 0,
       duration: 0.15,
@@ -475,36 +481,31 @@
     // ===== ندي للجزيئات قوة تفرق =====
     particles.forEach((p) => {
       const angle = Math.random() * Math.PI * 2;
-      const force = 9 + Math.random() * 16;
+      const force = 10 + Math.random() * 18;
       p.vx = Math.cos(angle) * force;
       p.vy = Math.sin(angle) * force;
     });
 
-    mouse.x = null;
-    mouse.y = null;
-
-    // ===== الجزيئات تطير ومش ترجع =====
+    // ===== الجزيئات تطير ومش تتأثر بأي حاجة =====
     update = function () {
       particles.forEach((p) => {
-        p.vx *= 0.965;
-        p.vy *= 0.965;
+        p.vx *= 0.96;
+        p.vy *= 0.96;
         p.x += p.vx;
         p.y += p.vy;
-        p.r *= 0.982;
+        p.r *= 0.978;
       });
     };
 
-    // ===== اختفاء ناعم للـ Overlay =====
+    // ===== اختفاء ناعم =====
     gsap.to(overlay, {
       autoAlpha: 0,
-      duration: 1.6,
+      duration: 1.5,
       ease: 'power1.out',
-      delay: 0.15,
+      delay: 0.1,
       onComplete: () => {
         cancelAnimationFrame(rafId);
         window.removeEventListener('resize', resize);
-        window.removeEventListener('mousemove', onMove);
-        window.removeEventListener('touchmove', onMove);
 
         if (overlay.parentNode) {
           overlay.parentNode.removeChild(overlay);
