@@ -436,6 +436,8 @@
     }
   }
 
+  let isDissolving = false;
+
   // start button
   startBtn.addEventListener('click', function () {
     try {
@@ -452,64 +454,67 @@
       return;
     }
 
-    // ===== نوقف أنيميشن الكتابة =====
+    // منع أي تفاعل تاني
+    isDissolving = true;
     clearTextLoop();
 
-    // ===== نمنع أي لمس أو كليك على الـ Overlay فورًا =====
     overlay.style.pointerEvents = 'none';
     overlay.style.touchAction = 'none';
+    canvas.style.pointerEvents = 'none';
 
-    // ===== مهم: نشيل مستمعي اللمس والماوس فورًا =====
+    // نشيل كل الـ listeners
     window.removeEventListener('mousemove', onMove);
     window.removeEventListener('touchmove', onMove);
+    window.removeEventListener('resize', resize);
     mouse.x = null;
     mouse.y = null;
 
-    // ===== نظهر الصفحة الرئيسية =====
+    // نظهر الصفحة الرئيسية
     document.body.classList.remove('intro-active');
     document.documentElement.classList.remove('intro-active');
 
-    // ===== خلفية شفافة =====
     gsap.set(overlay, {
       backgroundColor: 'transparent',
       backgroundImage: 'none',
     });
 
-    // ===== نخفي كل المحتوى فورًا =====
+    // نخفي المحتوى فورًا
     gsap.to([startBtn, contentEl], {
       autoAlpha: 0,
-      duration: 0.15,
+      duration: 0.12,
       ease: 'power2.out',
     });
 
-    // ===== ندي للجزيئات قوة تفرق =====
+    // ندي قوة تفرق للجزيئات
     particles.forEach((p) => {
       const angle = Math.random() * Math.PI * 2;
-      const force = 10 + Math.random() * 18;
+      const force = 11 + Math.random() * 20;
       p.vx = Math.cos(angle) * force;
       p.vy = Math.sin(angle) * force;
     });
 
-    // ===== الجزيئات تطير ومش تتأثر بأي حاجة =====
+    // ===== أنيميشن الطيران (مستقل تمامًا) =====
     update = function () {
+      if (!isDissolving) return;
+
       particles.forEach((p) => {
-        p.vx *= 0.96;
-        p.vy *= 0.96;
+        p.vx *= 0.955;
+        p.vy *= 0.955;
         p.x += p.vx;
         p.y += p.vy;
-        p.r *= 0.978;
+        p.r *= 0.975;
       });
     };
 
-    // ===== اختفاء ناعم =====
+    // اختفاء ناعم
     gsap.to(overlay, {
       autoAlpha: 0,
-      duration: 1.5,
+      duration: 1.45,
       ease: 'power1.out',
-      delay: 0.1,
+      delay: 0.08,
       onComplete: () => {
+        isDissolving = false;
         cancelAnimationFrame(rafId);
-        window.removeEventListener('resize', resize);
 
         if (overlay.parentNode) {
           overlay.parentNode.removeChild(overlay);
