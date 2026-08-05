@@ -452,24 +452,27 @@
       return;
     }
 
-    // 1. نظهر الصفحة الرئيسية فورًا من تحت الـ Overlay
+    // ===== مهم: نوقف أنيميشن الكتابة فورًا =====
+    clearTextLoop();
+
+    // ===== نظهر الصفحة الرئيسية من تحت =====
     document.body.classList.remove('intro-active');
     document.documentElement.classList.remove('intro-active');
 
-    // 2. نخلي خلفية الـ Overlay شفافة عشان الصفحة تبين من تحت
+    // ===== نخلي خلفية الـ Overlay شفافة =====
     gsap.set(overlay, {
       backgroundColor: 'transparent',
       backgroundImage: 'none',
     });
 
-    // 3. نخفي المحتوى (النص + الزرار + اللوجو) بسرعة
+    // ===== نخفي كل المحتوى فورًا (Aurora + الجملة + الزرار + اللوجو) =====
     gsap.to([startBtn, contentEl], {
       autoAlpha: 0,
-      duration: 0.2,
+      duration: 0.15,
       ease: 'power2.out',
     });
 
-    // 4. ندي للجزيئات قوة تفرق عالية
+    // ===== ندي للجزيئات قوة تفرق =====
     particles.forEach((p) => {
       const angle = Math.random() * Math.PI * 2;
       const force = 9 + Math.random() * 16;
@@ -477,22 +480,21 @@
       p.vy = Math.sin(angle) * force;
     });
 
-    // نوقف تفاعل الماوس
     mouse.x = null;
     mouse.y = null;
 
-    // 5. نخلي الجزيئات تطير ومش ترجع لمكانها
+    // ===== الجزيئات تطير ومش ترجع =====
     update = function () {
       particles.forEach((p) => {
         p.vx *= 0.965;
         p.vy *= 0.965;
         p.x += p.vx;
         p.y += p.vy;
-        p.r *= 0.982; // تصغير تدريجي
+        p.r *= 0.982;
       });
     };
 
-    // 6. نعمل Fade Out للـ Overlay كله (الجزيئات هتفضل طايرة فوق الصفحة)
+    // ===== اختفاء ناعم للـ Overlay =====
     gsap.to(overlay, {
       autoAlpha: 0,
       duration: 1.6,

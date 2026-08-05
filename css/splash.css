@@ -139,7 +139,14 @@
   justify-content: center;
   line-height: 1;
   min-height: 1em;
-  min-width: 5ch;
+
+  /* ===== التعديل المهم ===== */
+  width: 6.8ch;
+  min-width: 6.8ch;
+  max-width: 6.8ch;
+  overflow: hidden;
+  text-align: center;
+
   opacity: 0;
   transform: translateY(18px);
 }
