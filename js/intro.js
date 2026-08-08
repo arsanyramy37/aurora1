@@ -172,35 +172,52 @@
     }
   }
 
+  let preRenderedParticle = null;
+  function initPreRender() {
+    if (!img.complete || !img.naturalWidth) return;
+    preRenderedParticle = document.createElement('canvas');
+    preRenderedParticle.width = 100;
+    preRenderedParticle.height = 100;
+    const octx = preRenderedParticle.getContext('2d');
+    const center = 50;
+    const baseR = 30;
+
+    // Draw glow
+    octx.beginPath();
+    octx.fillStyle = 'rgba(26,180,170,0.12)';
+    octx.arc(center, center, baseR * 1.8, 0, Math.PI * 2);
+    octx.fill();
+
+    // Draw image clipped
+    octx.save();
+    octx.beginPath();
+    octx.arc(center, center, baseR, 0, Math.PI * 2);
+    octx.clip();
+    octx.drawImage(img, center - baseR, center - baseR, baseR * 2, baseR * 2);
+    octx.restore();
+  }
+
   function draw() {
     ctx.clearRect(0, 0, width, height);
     ctx.globalCompositeOperation = 'lighter';
     ctx.save();
     ctx.translate(canvasOffset.x, canvasOffset.y);
 
-    particles.forEach((p) => {
-      // simple glow
-      ctx.beginPath();
-      ctx.fillStyle = 'rgba(26,180,170,0.06)';
-      ctx.arc(p.x, p.y, p.r * 1.8, 0, Math.PI * 2);
-      ctx.fill();
+    if (!preRenderedParticle && img.complete) {
+      initPreRender();
+    }
 
-      // image clipped circle
-      ctx.save();
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.closePath();
-      ctx.clip();
-      // draw image centered in circle scaled
-      if (img.complete) {
-        const s = p.r * 2;
-        ctx.drawImage(img, p.x - p.r, p.y - p.r, s, s);
+    particles.forEach((p) => {
+      if (preRenderedParticle) {
+        const ratio = p.r / 30;
+        const size = 100 * ratio;
+        ctx.drawImage(preRenderedParticle, p.x - size / 2, p.y - size / 2, size, size);
       } else {
-        // fallback circle
         ctx.fillStyle = 'rgba(26,180,170,0.9)';
-        ctx.fillRect(p.x - p.r, p.y - p.r, p.r * 2, p.r * 2);
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
       }
-      ctx.restore();
     });
 
     ctx.restore();
@@ -469,15 +486,6 @@
     mouse.x = null;
     mouse.y = null;
 
-    // نظهر الصفحة الرئيسية
-    document.body.classList.remove('intro-active');
-    document.documentElement.classList.remove('intro-active');
-
-    gsap.set(overlay, {
-      backgroundColor: 'transparent',
-      backgroundImage: 'none',
-    });
-
     // نخفي المحتوى فورًا
     gsap.to([startBtn, contentEl], {
       autoAlpha: 0,
@@ -485,13 +493,24 @@
       ease: 'power2.out',
     });
 
-    // ندي قوة تفرق للجزيئات
+    // ندي قوة تفرق للجزيئات فورًا عشان الأنيميشن يبدأ سلس
     particles.forEach((p) => {
       const angle = Math.random() * Math.PI * 2;
       const force = 11 + Math.random() * 20;
       p.vx = Math.cos(angle) * force;
       p.vy = Math.sin(angle) * force;
     });
+
+    // نأخر إظهار الموقع 60 ملي ثانية عشان نمنع صدمة المتصفح وقت الانفجار
+    setTimeout(() => {
+      document.body.classList.remove('intro-active');
+      document.documentElement.classList.remove('intro-active');
+
+      gsap.set(overlay, {
+        backgroundColor: 'transparent',
+        backgroundImage: 'none',
+      });
+    }, 60);
 
     // ===== أنيميشن الطيران (مستقل تمامًا) =====
     update = function () {
